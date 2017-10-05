@@ -1,6 +1,5 @@
 # SpotiFour
-Spotify client for MTU Team Software Project Fall 2017
-
+Spotify client for MTU Team Software Project Fall 2
 
 Veronica Yurek\
 Sarah Curtis\
