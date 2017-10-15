@@ -12,6 +12,20 @@
         return hashParams;
     }
 
+    var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+        userProfileTemplate = Handlebars.compile(userProfileSource),
+        userProfilePlaceholder = document.getElementById('user-profile');
+
+    var oauthSource = document.getElementById('oauth-template').innerHTML,
+        oauthTemplate = Handlebars.compile(oauthSource),
+        oauthPlaceholder = document.getElementById('oauth');
+
+    var params = getHashParams();
+
+    var access_token = params.access_token,
+        refresh_token = params.refresh_token,
+        error = params.error;
+    alert(localStorage.getItem('access'));
     /*
        After the user has logged in, this method retrieves a list of the user's playlists.
        response contains the user information.
@@ -39,7 +53,7 @@
                 //append each playlist to show_playlists
                 for (var i = 0; i < list.items.length; i++) {
                     $('#show_playlists').append('<li><a href="playlist.html?userid=' +
-                        list.items[i].owner.id + '&playlistid=' + list.items[i].id +
+                        list.items[i].owner.id + '&playlistid=' + list.items[i].id + '&refresh=' + refresh_token +
                         '">' + list.items[i].name + '</a></li>')
 
                 }
@@ -47,20 +61,6 @@
             }
         });
     }
-
-    var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-        userProfileTemplate = Handlebars.compile(userProfileSource),
-        userProfilePlaceholder = document.getElementById('user-profile');
-
-    var oauthSource = document.getElementById('oauth-template').innerHTML,
-        oauthTemplate = Handlebars.compile(oauthSource),
-        oauthPlaceholder = document.getElementById('oauth');
-
-    var params = getHashParams();
-
-    var access_token = params.access_token,
-        refresh_token = params.refresh_token,
-        error = params.error;
 
     if (error) {
         alert('There was an error during the authentication');
