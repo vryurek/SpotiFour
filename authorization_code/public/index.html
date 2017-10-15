@@ -3,17 +3,7 @@
 <head>
     <title>Example of the Authorization Code flow with Spotify</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <style type="text/css">
-        #login, #loggedin {
-            display: none;
-        }
-        .text-overflow {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 500px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 </head>
 
 <body>
@@ -25,8 +15,8 @@
     <div id="loggedin">
         <div id="user-profile">
         </div>
-        <div id="oauth">
-        </div>
+        <ul id="show_playlists">Playlists</ul>
+        <div id="oauth"></div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
     </div>
 </div>
@@ -61,9 +51,9 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
 <script>
     (function() {
-
         /**
          * Obtains parameters from the hash of the URL
          * @return Object
@@ -76,6 +66,42 @@
                 hashParams[e[1]] = decodeURIComponent(e[2]);
             }
             return hashParams;
+        }
+
+        /*
+           After the user has logged in, this method retrieves a list of the user's playlists.
+           response contains the user information.
+         */
+        function getPlaylists (response) {
+                    var playlistLink =  'https://api.spotify.com/v1/users/' + response.id +'/playlists';
+                    addPlaylist(playlistLink);  //append each playlist to an unordered list
+        }
+
+        /*
+           Appends each playlist to an unordered list "show_playlists"
+           Accepts the url of the first playlist as a parameter
+         */
+        function addPlaylist(url) {
+            if (url === null) { //if the url is null, return
+                return;
+            }
+
+            $.ajax({    //get playlist info
+                url: url,
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                success: function(list) {
+                    //append each playlist to show_playlists
+                    for (var i = 0; i < list.items.length; i++) {
+                        $('#show_playlists').append('<li><a href="playlist.html?userid=' +
+                            list.items[i].owner.id + '&playlistid=' + list.items[i].id +
+                            '">' + list.items[i].name + '</a></li>')
+
+                    }
+                    addPlaylist(list.next); //move on to the next playlist
+                }
+            });
         }
 
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
@@ -103,17 +129,21 @@
                 });
 
                 $.ajax({
-                    url: 'https://api.spotify.com/v1/me',
+                    url: 'https://api.spotify.com/v1/me/',
                     headers: {
                         'Authorization': 'Bearer ' + access_token
                     },
                     success: function(response) {
                         userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                        getPlaylists(response); //retrieve playlists
 
                         $('#login').hide();
                         $('#loggedin').show();
+
+
                     }
                 });
+
             } else {
                 // render initial screen
                 $('#login').show();
