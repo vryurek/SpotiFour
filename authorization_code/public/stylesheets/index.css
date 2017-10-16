@@ -1,0 +1,35 @@
+#login, #loggedin {
+    display: none;
+}
+
+body {
+    background-color: black;
+}
+
+.font{
+    color: #66fcf1;
+    font-family: "Courier New";
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+}
+
+#show_playlists {
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+#test {
+    font-size: 1px;
+    color: #ffcd00;
+}
+
+.wrapper {
+    text-align: center;
+    color: #66fcf1;
+}
