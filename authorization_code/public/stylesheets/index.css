@@ -2,13 +2,31 @@
     display: none;
 }
 
+/* Webfont: Lato-Regular */@font-face {
+    font-family: 'LatoWeb';
+    src: url('fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+    url('fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+    url('fonts/Lato-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
 body {
     background-color: black;
 }
 
+.header{
+    background-color: black;
+    color: #66fcf1;
+}
+
 .font{
     color: #66fcf1;
-    font-family: "Courier New";
+    font-family: "LatoWeb";
 }
 
 .text-overflow {
@@ -32,4 +50,5 @@ body {
 .wrapper {
     text-align: center;
     color: #66fcf1;
+    font-family: LatoWeb;
 }
