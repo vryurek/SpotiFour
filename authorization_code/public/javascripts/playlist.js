@@ -23,7 +23,8 @@ function showTracks(url) {
         },
         success: function (tracks) {
             for (var i = 0; i < tracks.items.length; i++) {
-                $('#show_tracks').append('<li><a href="#">HI</a></li>')
+                var trck = tracks.items[i].track;
+                $('#show_tracks').append('<li>'+ trck.name + '</li>')
             }
             showTracks(tracks.next);
         }
