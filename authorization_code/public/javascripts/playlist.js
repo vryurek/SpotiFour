@@ -6,7 +6,6 @@ function getParams() {
     var playlistID = paramList[1].split('=')[1];
     var refresh_token = paramList[2].split('=')[1];
     var trackURL = 'https://api.spotify.com/v1/users/' + userID + '/playlists/' + playlistID + '/tracks';
-    alert(localStorage.getItem('access'));
     showTracks(trackURL);
 
 }
@@ -15,7 +14,6 @@ function showTracks(url) {
     if (url === null) {
         return;
     }
-    alert('hi');
     $.ajax({    //get track info
         url: url,
         headers: {
