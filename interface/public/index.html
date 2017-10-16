@@ -7,6 +7,12 @@
         #login, #loggedin {
             display: none;
         }
+        body {
+            background-color: black;
+        }
+        .blue{
+            color: #66fcf1;
+        }
         .text-overflow {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -15,6 +21,7 @@
         }
         .wrapper {
             text-align: center;
+            color: #66fcf1;
         }
     </style>
 </head>
@@ -22,9 +29,11 @@
 <body>
 <div class="container">
     <div id="login">
-        <h1 align="center">Please login with Spotify to continue</h1>
         <div class="wrapper">
-            <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+            <h1>Please login with Spotify to continue</h1>
+        </div>
+        <div class="wrapper">
+            <a href="/login" class="btn btn-primary" style="background-color: #66fcf1; color: #000000;">Log in with Spotify</a>
         </div>
     </div>
     <div id="loggedin">
@@ -37,8 +46,8 @@
 </div>
 
 <script id="user-profile-template" type="text/x-handlebars-template">
-    <h1>Welcome to SpotiFour!</h1>
-    <h3>You are logged in as {{id}}</h3>
+    <h1 class="blue">Welcome to SpotiFour!</h1>
+    <h3 class="blue">You are logged in as {{id}}</h3>
     <div class="media">
         <div class="pull-left">
             <img class="media-object" width="150" src="{{images.0.url}}" />
