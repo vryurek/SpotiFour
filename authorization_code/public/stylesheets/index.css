@@ -1,6 +1,16 @@
 #login, #loggedin {
     display: none;
 }
+
+body {
+    background-color: black;
+}
+
+.font{
+    color: #66fcf1;
+    font-family: "Courier New";
+}
+
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -17,4 +27,9 @@
 #test {
     font-size: 1px;
     color: #ffcd00;
+}
+
+.wrapper {
+    text-align: center;
+    color: #66fcf1;
 }
