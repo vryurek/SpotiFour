@@ -25,7 +25,6 @@
     var access_token = params.access_token,
         refresh_token = params.refresh_token,
         error = params.error;
-    alert(localStorage.getItem('access'));
     /*
        After the user has logged in, this method retrieves a list of the user's playlists.
        response contains the user information.
@@ -108,4 +107,11 @@
                 });
             });
         }, false);
+
+        document.getElementById('logout').addEventListener('click', function() {
+            $('#login').show();
+            $('#loggedin').hide();
+
+        }, false);
     }
+

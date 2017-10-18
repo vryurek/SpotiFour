@@ -47,6 +47,7 @@ app.get('/login', function(req, res) {
     var scope = 'user-read-private user-read-email';
     res.redirect('https://accounts.spotify.com/authorize?' +
         querystring.stringify({
+            show_dialog: true,
             response_type: 'code',
             client_id: client_id,
             scope: scope,
