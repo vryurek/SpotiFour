@@ -107,4 +107,11 @@
                 });
             });
         }, false);
+
+        document.getElementById('logout').addEventListener('click', function() {
+            $('#login').show();
+            $('#loggedin').hide();
+
+        }, false);
     }
+
