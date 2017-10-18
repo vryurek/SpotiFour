@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 
-<body>
+<body>s
 <div class="container">
     <div id="login">
         <div class="wrapper">
@@ -17,12 +17,12 @@
     <div id="loggedin">
         <div id="user-profile">
         </div>
+        <input type="search" id="searchfield"/><input type="submit" id="searchbtn"/>
         <ul id="show_playlists" class="font">Playlists</ul>
         <div id="oauth"></div>
         <button class="btn btn-default" id="obtain-new-token" style="background-color: #66fcf1">Obtain new token using the refresh token</button>
     </div>
 </div>
-<div id="test">TEST</div>
 <script id="user-profile-template" type="text/x-handlebars-template">
     <div class="font">
         <h1>Logged in as {{display_name}}</h1>
@@ -65,6 +65,7 @@
     localStorage.setItem('access', access_token);
     localStorage.setItem('refresh', refresh_token);
 </script>
+<script src="javascripts/search.js"></script>
 </body>
 </html>
 
