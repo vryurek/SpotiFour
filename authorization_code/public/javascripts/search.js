@@ -33,6 +33,7 @@ function sendSearch(url){
 }
 
 $("#searchbtn").click(function () {
+    console.log($("#searchfield").val());
     var url = createSearchUrl($("#searchfield").val(), ["artist", "album"]);
     sendSearch(url);
     window.location='search.html';
