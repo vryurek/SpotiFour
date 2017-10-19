@@ -17,6 +17,7 @@
 
 body {
     background-color: black;
+    font-family: LatoWeb;
 }
 
 div#header{
@@ -60,15 +61,9 @@ div#sidebar{
     width: 500px;
 }
 
-#show_playlists {
+ul#show_playlists {
     white-space: nowrap;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-#test {
-    font-size: 1px;
-    color: #ffcd00;
+    font: 18pt normal LatoWeb;
 }
 
 .wrapper {
