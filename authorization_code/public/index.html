@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 
-<body>s
+<body>
 <div class="container">
     <div id="login">
         <div class="wrapper">
@@ -15,44 +15,26 @@
         </div>
     </div>
     <div id="loggedin">
-        <div id="header">SpotiFour</div>
+        <div id="header">SpotiFour
+            <input type="search" id="searchfield" style="font-size: 16pt; color: black"/><input type="submit" id="searchbtn" value="Search" style="background-color: black; font-size: 16pt"/>
+        </div>
         <div id="mainPane">
             <div id="user-profile"></div>
             <ul id="show_playlists" class="font">Playlists</ul>
             <div id="oauth"></div>
-            <button class="btn btn-default" id="obtain-new-token" style="background-color: #66fcf1">Obtain new token using the refresh token</button>
-            <input type="search" id="searchfield"/><input type="submit" id="searchbtn" value="Search"/>
+            <div style="padding-top: 20px">
+            </div>
         </div>
     </div>
 </div>
+
 <script id="user-profile-template" type="text/x-handlebars-template">
     <div id="sidebar" class="font">
-        <h1>Logged in as {{display_name}}</h1>
-        <div class="media">
-            <div class="pull-left">
-                <img class="media-object" width="150" src="{{images.0.url}}" />
-            </div>
-            <div class="media-body">
-                <dl class="dl-horizontal">
-                    <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-                    <dt>Id</dt><dd>{{id}}</dd>
-                    <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-                    <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-                </dl>
-            </div>
-        </div>
+        <h2>Logged in as {{display_name}}</h2>
     </div>
 </script>
 
-<script id="oauth-template" type="text/x-handlebars-template">
-    <div class="font">
-        <h2>oAuth info</h2>
-        <dl class="dl-horizontal">
-            <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-            <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}></dd>
-        </dl>
-    </div>
-</script>
+<script id="oauth-template" type="text/x-handlebars-template"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
