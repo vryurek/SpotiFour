@@ -35,23 +35,22 @@ div#header{
 
 div#mainPane{
     background-color: black;
+    color: #66fcf1;
+    font-family: LatoWeb;
     margin: 0;
     padding: 15% 0 0 20%;
 }
 
 div#sidebar{
     background-color: #66fcf1;
+    font-family: LatoWeb;
     position: absolute;
+    text-align: center;
     top: 0;
     left: 0;
     width: 20%;
     height: 100%;
     color: black;
-}
-
-.font{
-    color: #66fcf1;
-    font-family: "LatoWeb";
 }
 
 .text-overflow {
