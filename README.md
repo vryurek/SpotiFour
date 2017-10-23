@@ -10,7 +10,7 @@ command 'npm install'. This will install the node modules. Then, go to the 'proj
 in the node.js command prompt and enter the command 'node app.js'. The message 'Listening on 8888' should appear.
 
 Then, go to your browser an type 'localhost:8888' in the address bar. This will bring you to the application\
-login screen. We have created a Spotify account specifically for this project:\
+login screen. We have created a Spotify account specifically for this project (Login information is in the deliverables)
     
 Authors:\
 Veronica Yurek\
