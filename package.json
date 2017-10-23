@@ -8,5 +8,11 @@
     "express": "~4.0.0",
     "querystring": "~0.2.0",
     "request": "~2.34.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "Test": "node ./node_modules/mocha/bin/mocha"
   }
 }

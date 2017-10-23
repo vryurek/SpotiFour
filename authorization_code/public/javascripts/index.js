@@ -1,3 +1,8 @@
+/**
+ * This js file contains all the javscript code necessary for index.html. A
+ * skeleton of this code was provided by spotify as an example, but it has
+ * been modified and added to.
+ */
     /**
      * Obtains parameters from the hash of the URL
      * @return Object
@@ -12,20 +17,24 @@
         return hashParams;
     }
 
+    //user profile template
     var userProfileSource = document.getElementById('user-profile-template').innerHTML,
         userProfileTemplate = Handlebars.compile(userProfileSource),
         userProfilePlaceholder = document.getElementById('user-profile');
 
+    //template for displaying oauth information, not currently used
     var oauthSource = document.getElementById('oauth-template').innerHTML,
         oauthTemplate = Handlebars.compile(oauthSource),
         oauthPlaceholder = document.getElementById('oauth');
 
-    var params = getHashParams();
+    var params = getHashParams();   //the params from the url
 
+    //the access token, refresh token, and error from params
     var access_token = params.access_token,
         refresh_token = params.refresh_token,
         error = params.error;
-    /*
+
+    /**
        After the user has logged in, this method retrieves a list of the user's playlists.
        response contains the user information.
      */
@@ -34,7 +43,7 @@
         addPlaylist(playlistLink);  //append each playlist to an unordered list
     }
 
-    /*
+    /**
        Appends each playlist to an unordered list "show_playlists"
        Accepts the url of the first playlist as a parameter
      */
@@ -52,34 +61,37 @@
                 //append each playlist to show_playlists
                 for (var i = 0; i < list.items.length; i++) {
                     $('#show_playlists').append('<li><a href="playlist.html?userid=' +
-                        list.items[i].owner.id + '&playlistid=' + list.items[i].id + '&refresh=' + refresh_token +
+                        list.items[i].owner.id + '&playlistid=' + list.items[i].id +
                         '">' + list.items[i].name + '</a></li>')
 
                 }
-                addPlaylist(list.next); //move on to the next playlist
+                addPlaylist(list.next); //move on to the next playlist, if there is one
             }
         });
     }
 
+    //if there is an error
     if (error) {
         alert('There was an error during the authentication');
-    } else {
-        if (access_token) {
-            // render oauth info
+    } else {    //otherwise, continue
+        if (access_token) {     //if an access token is obtained, render the loggedin screen
+            // render oauth info, currently unused
             oauthPlaceholder.innerHTML = oauthTemplate({
                 access_token: access_token,
                 refresh_token: refresh_token
             });
 
+            //request user info
             $.ajax({
                 url: 'https://api.spotify.com/v1/me/',
                 headers: {
                     'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
-                    userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                    userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
                     getPlaylists(response); //retrieve playlists
 
+                    //show the loggedin screen
                     $('#login').hide();
                     $('#loggedin').show();
 
@@ -88,30 +100,41 @@
             });
 
         } else {
-            // render initial screen
+            // render initial login screen
             $('#login').show();
             $('#loggedin').hide();
         }
 
-        document.getElementById('obtain-new-token').addEventListener('click', function() {
-            $.ajax({
-                url: '/refresh_token',
-                data: {
-                    'refresh_token': refresh_token
-                }
-            }).done(function(data) {
-                access_token = data.access_token;
-                oauthPlaceholder.innerHTML = oauthTemplate({
-                    access_token: access_token,
-                    refresh_token: refresh_token
+        //refreshes the access token, currently unused
+        var tokenbtn = document.getElementById('obtain-new-token');
+        if (tokenbtn) {
+            tokenbtn.addEventListener('click', function() {
+                $.ajax({
+                    url: '/refresh_token',
+                    data: {
+                        'refresh_token': refresh_token
+                    }
+                }).done(function(data) {
+                    access_token = data.access_token;
+                    oauthPlaceholder.innerHTML = oauthTemplate({
+                        access_token: access_token,
+                        refresh_token: refresh_token
+                    });
                 });
-            });
-        }, false);
+            }, false);
+        }
 
-        document.getElementById('logout').addEventListener('click', function() {
-            $('#login').show();
-            $('#loggedin').hide();
+        /**
+         * returns the user to the login screen to re-approve the application or login as someone else
+         */
+        var logoutbtn = document.getElementById('logout');
+        if (logoutbtn) {
+            logoutbtn.addEventListener('click', function() {
+                $('#login').show();
+                $('#loggedin').hide();
 
-        }, false);
+            }, false);
+        }
+
     }
 

@@ -1,10 +1,6 @@
 /**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
+ * This is an example of a basic node.js script provided by Spotify to
+ * correctly connect to Spotify Accounts.
  */
 
 var express = require('express'); // Express web server framework
@@ -12,9 +8,9 @@ var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = '614eb3770b4c4c9bad02b628cc428e36'; // Your client id
-var client_secret = '7e407df73adb4243a9780f52d9a9c1e5'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var client_id = '614eb3770b4c4c9bad02b628cc428e36'; // client id
+var client_secret = '7e407df73adb4243a9780f52d9a9c1e5'; // the application's secret key
+var redirect_uri = 'http://localhost:8888/callback'; // redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -23,7 +19,7 @@ var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
  */
 var generateRandomString = function(length) {
     var text = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';    //possible characters
 
     for (var i = 0; i < length; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -38,16 +34,16 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
     .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.get('/login', function(req, res) {          //login route
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
     // your application requests authorization
-    var scope = 'user-read-private user-read-email';
-    res.redirect('https://accounts.spotify.com/authorize?' +
+    var scope = 'user-read-private user-read-email';          //email scope
+    res.redirect('https://accounts.spotify.com/authorize?' +    //redirect to spotify login
         querystring.stringify({
-            show_dialog: true,
+            show_dialog: true,      //requires user to approve login every time
             response_type: 'code',
             client_id: client_id,
             scope: scope,
@@ -56,7 +52,7 @@ app.get('/login', function(req, res) {
         }));
 });
 
-app.get('/callback', function(req, res) {
+app.get('/callback', function(req, res) {       //callback route
 
     // your application requests refresh and access tokens
     // after checking the state parameter
@@ -65,13 +61,13 @@ app.get('/callback', function(req, res) {
     var state = req.query.state || null;
     var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-    if (state === null || state !== storedState) {
+    if (state === null || state !== storedState) {  //if states don't mach
         res.redirect('/#' +
             querystring.stringify({
                 error: 'state_mismatch'
             }));
     } else {
-        res.clearCookie(stateKey);
+        res.clearCookie(stateKey);      //clear the statekey
         var authOptions = {
             url: 'https://accounts.spotify.com/api/token',
             form: {
@@ -102,13 +98,13 @@ app.get('/callback', function(req, res) {
                     console.log(body);
                 });
 
-                // we can also pass the token to the browser to make requests from there
+                //pass the token to the browser to make requests from there
                 res.redirect('/#' +
                     querystring.stringify({
                         access_token: access_token,
                         refresh_token: refresh_token
                     }));
-            } else {
+            } else {                //if the access token is invalid
                 res.redirect('/#' +
                     querystring.stringify({
                         error: 'invalid_token'
@@ -118,11 +114,11 @@ app.get('/callback', function(req, res) {
     }
 });
 
-app.get('/refresh_token', function(req, res) {
+app.get('/refresh_token', function(req, res) {      //route to refresh teh access token
 
     // requesting access token from refresh token
     var refresh_token = req.query.refresh_token;
-    var authOptions = {
+    var authOptions = {             //request using refresh_token
         url: 'https://accounts.spotify.com/api/token',
         headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
         form: {
@@ -134,9 +130,9 @@ app.get('/refresh_token', function(req, res) {
 
     request.post(authOptions, function(error, response, body) {
         if (!error && response.statusCode === 200) {
-            var access_token = body.access_token;
+            var access_token = body.access_token;   //new access_token
             res.send({
-                'access_token': access_token
+                'access_token': access_token    //send new access token to id access_token
             });
         }
     });
