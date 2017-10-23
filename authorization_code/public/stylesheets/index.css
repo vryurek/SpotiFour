@@ -2,7 +2,8 @@
     display: none;
 }
 
-/* Webfont: Lato-Regular */@font-face {
+/* Webfont: Lato-Regular */
+@font-face {
     font-family: 'LatoWeb';
     src: url('fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
     src: url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -14,11 +15,15 @@
     text-rendering: optimizeLegibility;
 }
 
-
+/*style for html body*/
 body {
     background-color: black;
+    font-family: LatoWeb;
 }
 
+/*defines the style for the header text at the top
+of the screen
+ */
 div#header{
     background-color: black;
     font-family: LatoWeb;
@@ -33,25 +38,26 @@ div#header{
     border-bottom: 10px solid #66fcf1;
 }
 
+/* style for the main pane that displays tracks, albums, etc.*/
 div#mainPane{
     background-color: black;
+    color: #66fcf1;
+    font-family: LatoWeb;
     margin: 0;
     padding: 15% 0 0 20%;
 }
 
+/*style for side div that displays user info and playlists*/
 div#sidebar{
     background-color: #66fcf1;
+    font-family: LatoWeb;
     position: absolute;
+    text-align: center;
     top: 0;
     left: 0;
     width: 20%;
     height: 100%;
     color: black;
-}
-
-.font{
-    color: #66fcf1;
-    font-family: "LatoWeb";
 }
 
 .text-overflow {
@@ -61,17 +67,13 @@ div#sidebar{
     width: 500px;
 }
 
-#show_playlists {
+/*style for the list of playlists*/
+ul#show_playlists {
     white-space: nowrap;
-    font-size: 10px;
-    font-weight: bold;
+    font: 18pt normal LatoWeb;
 }
 
-#test {
-    font-size: 1px;
-    color: #ffcd00;
-}
-
+/*style for the text wrapper*/
 .wrapper {
     text-align: center;
     color: #66fcf1;
