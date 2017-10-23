@@ -3,7 +3,7 @@ Spotify client for MTU Team Software Project Fall 2017. It will include basic fe
 (such as a music player, playlists, etc.) and a display lyrics feature.\
 
 This project uses node.js, so you will need to download and install it before you can run this code.\
-Download from here: https://nodejs.org/en/download/\
+Download from here: https://nodejs.org/en/download/
 
 Once node.js is installed, open the node.js terminal and go to the project directory. Enter the \
 command 'npm install'. This will install the node modules. Then, go to the authorization_code directory\
