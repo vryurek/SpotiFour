@@ -1,3 +1,4 @@
+<!--This html file renders the initial login screen and the initial menu screen after login-->
 <!doctype html>
 <html>
 <head>
@@ -8,28 +9,37 @@
 
 <body>
 <div class="container">
+    <!--The initial login page-->
     <div id="login">
         <div class="wrapper">
             <h1>Please login with Spotify to continue</h1>
+            <!--Login button-->
             <a href="/login" class="btn btn-primary" style="background-color: #66fcf1; color: black;">Log in with Spotify</a>
         </div>
     </div>
+
+    <!--The page once you login-->
     <div id="loggedin">
         <div id="header">SpotiFour
+            <!--Search bar-->
             <input type="search" id="searchfield" style="font-size: 16pt; color: black"/><input type="submit" id="searchbtn" value="Search" style="background-color: black; font-size: 16pt"/>
+            <!--Logout button-->
+            <button class="btn btn-primary" id="logout" style="background-color: #66fcf1; color: black">Logout</button>
         </div>
         <div id="mainPane">
-            <div id="user-profile"></div>
-            <ul id="show_playlists" style="font-family: LatoWeb">Playlists</ul>
-            <div id="oauth"></div>
+            <div id="user-profile"></div>   <!--renders user-profile-template-->
+            <div id="oauth"></div>  <!--renders oauth template, currently empty-->
         </div>
     </div>
 </div>
 
+<!--renders user info on the left side of the screen-->
 <script id="user-profile-template" type="text/x-handlebars-template">
     <div id="sidebar">
         <h2>Logged in as {{display_name}}</h2>
+        <ul id="show_playlists" style="font-family: LatoWeb">Playlists</ul>
     </div>
+
 </script>
 
 <script id="oauth-template" type="text/x-handlebars-template"></script>
@@ -38,8 +48,8 @@
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="javascripts/index.js"></script>
 <script>
-    localStorage.setItem('access', access_token);
-    localStorage.setItem('refresh', refresh_token);
+    localStorage.setItem('access', access_token);       //store the access token for use in other pages
+    localStorage.setItem('refresh', refresh_token);     //store the refresh token for use in other pages
 </script>
 <script src="javascripts/search.js"></script>
 </body>
