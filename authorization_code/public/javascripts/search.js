@@ -1,4 +1,11 @@
+//Access token for spotify requests
 var access_token = localStorage.getItem('access');
+
+/*
+ Generates a url for the GET request given a search
+ query and fields. Still need to add a lot of
+ search customization
+ */
 function createSearchUrl(query, fields){
     if(query === null) return;
     var words = query.split(" ");
@@ -19,6 +26,10 @@ function createSearchUrl(query, fields){
     return url;
 }
 
+/*
+Completes an Ajax request given a url and stores the results
+to the webpage
+ */
 function sendSearch(url){
     $.ajax({
         url: url,
