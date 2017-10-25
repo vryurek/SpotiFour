@@ -5,6 +5,8 @@
     <title>SpotiFour</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="import" href="playlist.html">
+
 </head>
 
 <body>
@@ -27,6 +29,9 @@
             <button class="btn btn-primary" id="logout" style="background-color: #66fcf1; color: black">Logout</button>
         </div>
         <div id="mainPane">
+            <iframe id="iframe" src = "" width="400" height="300">
+                <p>Your browser does not support iframes.</p>
+            </iframe>
             <div id="user-profile"></div>   <!--renders user-profile-template-->
             <div id="oauth"></div>  <!--renders oauth template, currently empty-->
         </div>
