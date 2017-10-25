@@ -34,6 +34,7 @@
         refresh_token = params.refresh_token,
         error = params.error;
 
+
     /**
        After the user has logged in, this method retrieves a list of the user's playlists.
        response contains the user information.
@@ -58,17 +59,37 @@
                 'Authorization': 'Bearer ' + access_token
             },
             success: function(list) {
+                var userID;
                 //append each playlist to show_playlists
                 for (var i = 0; i < list.items.length; i++) {
-                    $('#show_playlists').append('<li><a href="playlist.html?userid=' +
-                        list.items[i].owner.id + '&playlistid=' + list.items[i].id +
-                        '">' + list.items[i].name + '</a></li>')
+                    // $('#show_playlists').append('<li><a href="playlist.html?userid=' +
+                    //     list.items[i].owner.id + '&playlistid=' + list.items[i].id +
+                    //     '">' + list.items[i].name + '</a></li>')
+                    var playlistID = list.items[i].id;
+                    userID = list.items[i].owner.id;
+                    console.log(playlistID);
+                    $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + list.items[i].name + '</a></li>');
+
+                    addPlaylistListener(playlistID, userID);
 
                 }
                 addPlaylist(list.next); //move on to the next playlist, if there is one
             }
         });
     }
+
+    function addPlaylistListener(listID, userID) {
+        (function () {
+            var id = document.getElementById(listID);
+            if (id) {
+                id.addEventListener('click', function () {
+                    document.getElementById('iframe').src = "playlist.html?userid=" + userID
+                        + "&playlistid=" + listID;
+                }, false);
+            }
+        }());
+    }
+
 
     //if there is an error
     if (error) {
@@ -90,6 +111,7 @@
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
                     getPlaylists(response); //retrieve playlists
+
 
                     //show the loggedin screen
                     $('#login').hide();
@@ -135,6 +157,5 @@
 
             }, false);
         }
-
     }
 
