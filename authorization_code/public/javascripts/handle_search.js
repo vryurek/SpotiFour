@@ -2,7 +2,7 @@
   Receives the JSON object generated
   from the search submission
  */
-var results = JSON.parse(localStorage.getItem('search_results'));
+var results = JSON.parse(sessionStorage.getItem('search_results'));
 
 /*
     Takes the JSON object and displays the

@@ -1,5 +1,8 @@
 //Access token for spotify requests
-var access_token = localStorage.getItem('access');
+var access_token;
+window.onload = function() {
+    access_token = localStorage.getItem('access');
+}
 
 /*
  Generates a url for the GET request given a search
@@ -23,6 +26,8 @@ function createSearchUrl(query, fields){
     }
 
     url += "&limit=8";
+    //var url = "https://api.spotify.com/v1/search?q=tania%20bowra&type=artist";
+    console.log(url);
     return url;
 }
 
@@ -31,20 +36,25 @@ Completes an Ajax request given a url and stores the results
 to the webpage
  */
 function sendSearch(url){
+    console.log(access_token);
     $.ajax({
         url: url,
         headers: {
             'Authorization': 'Bearer ' + access_token
         },
         success: function (results) {
-            localStorage.setItem('search_results', JSON.stringify(results));
+            sessionStorage.clear();
+            sessionStorage.setItem('search_results', JSON.stringify(results));
+            alert(JSON.stringify(results));
+        },
+        error: function (jqXHR, textStatus, errorThrown ){
+            //alert(textStatus);
         }
 
     });
 }
 
 $("#searchbtn").click(function () {
-    console.log($("#searchfield").val());
     var url = createSearchUrl($("#searchfield").val(), ["artist", "album"]);
     sendSearch(url);
     window.location='search.html';
