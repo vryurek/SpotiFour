@@ -83,7 +83,7 @@
             var id = document.getElementById(listID);
             if (id) {
                 id.addEventListener('click', function () {
-                    document.getElementById('iframe').src = "playlist.html?userid=" + userID
+                    document.getElementById('mainPane').src = "playlist.html?userid=" + userID
                         + "&playlistid=" + listID;
                 }, false);
             }
