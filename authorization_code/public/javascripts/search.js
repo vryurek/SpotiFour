@@ -2,7 +2,7 @@
 var access_token;
 window.onload = function() {
     access_token = localStorage.getItem('access');
-}
+};
 
 /*
  Generates a url for the GET request given a search
@@ -26,8 +26,6 @@ function createSearchUrl(query, fields){
     }
 
     url += "&limit=8";
-    //var url = "https://api.spotify.com/v1/search?q=tania%20bowra&type=artist";
-    console.log(url);
     return url;
 }
 
@@ -36,7 +34,6 @@ Completes an Ajax request given a url and stores the results
 to the webpage
  */
 function sendSearch(url){
-    console.log(access_token);
     $.ajax({
         url: url,
         headers: {
@@ -45,7 +42,7 @@ function sendSearch(url){
         success: function (results) {
             sessionStorage.clear();
             sessionStorage.setItem('search_results', JSON.stringify(results));
-            alert(JSON.stringify(results));
+            document.getElementById('mainPane').src="search.html";
         },
         error: function (jqXHR, textStatus, errorThrown ){
             //alert(textStatus);
@@ -55,7 +52,6 @@ function sendSearch(url){
 }
 
 $("#searchbtn").click(function () {
-    var url = createSearchUrl($("#searchfield").val(), ["artist", "album"]);
+    var url = createSearchUrl($("#searchfield").val(), ["artist", "album", "track"]);
     sendSearch(url);
-    window.location='search.html';
 });
