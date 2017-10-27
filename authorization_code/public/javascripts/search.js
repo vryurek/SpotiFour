@@ -1,4 +1,14 @@
-var access_token = localStorage.getItem('access');
+//Access token for spotify requests
+var access_token;
+window.onload = function() {
+    access_token = localStorage.getItem('access');
+};
+
+/*
+ Generates a url for the GET request given a search
+ query and fields. Still need to add a lot of
+ search customization
+ */
 function createSearchUrl(query, fields){
     if(query === null) return;
     var words = query.split(" ");
@@ -19,6 +29,10 @@ function createSearchUrl(query, fields){
     return url;
 }
 
+/*
+Completes an Ajax request given a url and stores the results
+to the webpage
+ */
 function sendSearch(url){
     $.ajax({
         url: url,
@@ -26,15 +40,18 @@ function sendSearch(url){
             'Authorization': 'Bearer ' + access_token
         },
         success: function (results) {
-            localStorage.setItem('search_results', JSON.stringify(results));
+            sessionStorage.clear();
+            sessionStorage.setItem('search_results', JSON.stringify(results));
+            document.getElementById('mainPane').src="search.html";
+        },
+        error: function (jqXHR, textStatus, errorThrown ){
+            //alert(textStatus);
         }
 
     });
 }
 
 $("#searchbtn").click(function () {
-    console.log($("#searchfield").val());
-    var url = createSearchUrl($("#searchfield").val(), ["artist", "album"]);
+    var url = createSearchUrl($("#searchfield").val(), ["artist", "album", "track"]);
     sendSearch(url);
-    window.location='search.html';
 });
