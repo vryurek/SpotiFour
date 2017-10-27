@@ -59,11 +59,10 @@ div#paneHeader{
 
 /* style for the main pane that displays tracks, albums, etc.*/
 #mainPane{
-    background-color: #000000;
+    background-color: black;
     color: #66fcf1;
     font-family: LatoWeb;
     padding: 0;
-    margin: 10% 0 0 4%;
     min-width: 0;
 }
 
