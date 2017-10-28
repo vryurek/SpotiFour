@@ -1,6 +1,5 @@
-/**
- * This is an example of a basic node.js script provided by Spotify to
- * correctly connect to Spotify Accounts.
+/*
+    Handler of the oAuth authentication flow
  */
 
 var express = require('express'); // Express web server framework
@@ -114,7 +113,7 @@ app.get('/callback', function(req, res) {       //callback route
     }
 });
 
-app.get('/refresh_token', function(req, res) {      //route to refresh teh access token
+app.get('/refresh_token', function(req, res) {      //route to refresh the access token
 
     // requesting access token from refresh token
     var refresh_token = req.query.refresh_token;
