@@ -1,0 +1,131 @@
+/* Webfont: Lato-Regular */
+@font-face {
+    font-family: 'LatoWeb';
+    src: url('fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+    url('fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+    url('fonts/Lato-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+body {
+    overflow-x: hidden;
+}
+
+#header {
+    margin: 4% 0 0 2.5%;
+    border-bottom: 2px solid dimgray;
+    font-family: LatoWeb;
+    color: #66fcf1;
+    text-align: left;
+    font-size: 36pt;
+    width: 95%;
+    padding: 0;
+}
+
+#head {
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+}
+
+#headinfo {
+    color: #ffffff;
+    font-size: 11pt;
+    display: table-cell;
+    padding: 0 0 0 5%;
+    white-space: nowrap;
+}
+.pane {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.playbtn {
+    z-index: 4;
+    height: 5%;
+    padding: 0.75% 0 0 1%;
+    position: absolute;
+}
+
+#show_tracks {
+    list-style: none;
+    font-family: LatoWeb;
+    font-size: 12pt;
+    white-space: nowrap;
+}
+
+.cell1 {
+    display: table-cell;
+    padding: 1.5% 0 0 40%;
+    position: absolute;
+    z-index: 3;
+}
+
+.cell2 {
+    display: table-cell;
+    padding: 1.5% 0 0 60%;
+    position: absolute;
+    z-index: 2;
+}
+
+.cell3 {
+    display: table-cell;
+    padding: 1.5% 0 0 85%;
+    position: absolute;
+    z-index: 1;
+}
+
+.track {
+    border-bottom: 1px solid dimgray;
+    min-height: 50px;
+
+}
+
+.track:hover, .offcanvas a:focus {
+    background-color: rgb(50, 50, 50);
+}
+
+.track-title {
+    display: table-cell;
+    position: absolute;
+    padding: 1.5% 0 0 5%;
+}
+
+.track-artist {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.track-album {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.track-lyric {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#show_tracks li a:hover, .offcanvas a:focus {
+    color: #66fcf1;
+}
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(15, 15, 15);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: dimgray;
+    outline: 3px solid black;
+}
