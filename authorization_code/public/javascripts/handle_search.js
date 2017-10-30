@@ -16,6 +16,9 @@ function displayResults(res) {
     var tracksList = document.getElementById('show_tracks');
     var listSize = results.tracks.items.length;
 
+    //Add # of songs to info
+    document.getElementById('headinfo').innerText = listSize + " songs";
+
     for (var i = 0; i < listSize; i++) {
         var trck = results.tracks.items[i];
         var tmpl = document.getElementById('track-template').content.cloneNode(true);
@@ -23,7 +26,7 @@ function displayResults(res) {
         //shortens long track names
         var trackName = trck.name;
         if (trackName.length > 50) {
-            var extra = (trackName.length - 50) * -1
+            var extra = (trackName.length - 50) * -1;
             trackName = trackName.slice(0, extra) + "...";
         }
 
@@ -33,7 +36,7 @@ function displayResults(res) {
         //shortens long artist name
         var artistName = trck.artists[0].name;  //get the first artist
         if (artistName.length > 25) {
-            var ex = (artistName.length - 25) * -1
+            var ex = (artistName.length - 25) * -1;
             artistName = artistName.slice(0, ex) + "...";
         }
         tmpl.querySelector('.track-artist').innerText = artistName; //write to html
@@ -41,7 +44,7 @@ function displayResults(res) {
         //shortens long album names
         var albumName = trck.album.name;
         if (albumName.length > 30) {
-            var ext = (albumName.length - 30) * -1
+            var ext = (albumName.length - 30) * -1;
             albumName = albumName.slice(0, ext) + "...";
         }
         //write to html
@@ -50,14 +53,10 @@ function displayResults(res) {
         addAlbumListener(trck.album.id);    //add listener to album
         addPlayListener(trck.uri);          //add listener to play button
 
-        tracksList.appendChild(tmpl);   //write template to html
-
         tmpl.querySelector('.track-album').id = trck.album.id;  //add id for listener
         tmpl.querySelector('.playbtn').id = trck.uri;   //add is for listener
-
-
+        tracksList.appendChild(tmpl);   //write template to html
     }
-
 
 }
 
@@ -107,6 +106,9 @@ function addPlayListener(uri) {
                 }
 
             }, false);
+        }
+        else {
+            console.log("Error adding listener to " + uri);
         }
     }());
 }
