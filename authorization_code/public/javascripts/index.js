@@ -67,10 +67,11 @@
                     //     '">' + list.items[i].name + '</a></li>')
                     var playlistID = list.items[i].id;
                     userID = list.items[i].owner.id;
+                    var playlistName = list.items[i].name;
                     console.log(playlistID);
-                    $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + list.items[i].name + '</a></li>');
+                    $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistName + '</a></li>');
 
-                    addPlaylistListener(playlistID, userID);
+                    addPlaylistListener(playlistID, userID, playlistName);
 
                 }
                 addPlaylist(list.next); //move on to the next playlist, if there is one
@@ -78,13 +79,13 @@
         });
     }
 
-    function addPlaylistListener(listID, userID) {
+    function addPlaylistListener(listID, userID, playlistName) {
         (function () {
             var id = document.getElementById(listID);
             if (id) {
                 id.addEventListener('click', function () {
-                    document.getElementById('iframe').src = "playlist.html?userid=" + userID
-                        + "&playlistid=" + listID;
+                    document.getElementById('mainPane').src = "playlist.html?userid=" + userID
+                        + "&playlistid=" + listID + "&playlistname=" + playlistName;
                 }, false);
             }
         }());

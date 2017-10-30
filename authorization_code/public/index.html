@@ -8,7 +8,7 @@
     <link rel="import" href="playlist.html">
 
 </head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 <div class="container">
     <!--The initial login page-->
@@ -22,30 +22,49 @@
 
     <!--The page once you login-->
     <div id="loggedin">
+        <!--renders user info on the left side of the screen-->
+        <script id="user-profile-template" type="text/x-handlebars-template">
+
+            <div id="sidebar">
+                <!--image here-->
+
+                <div class="sbHeader">Welcome <br> {{display_name}}</div>
+                <div style="font-size: 15pt;">{{id}}</div>
+                <div class="h"> Browse Popular
+                    <br><a href="#">Songs</a><br>
+                    <a href="#">Albums</a><br>
+                    <a href="#">Artists</a><br>
+                </div>
+                <div class="h"> Your Library
+                    <br><a href="#">Songs</a><br>
+                    <a href="#">Albums</a><br>
+                    <a href="#">Artists</a><br>
+                </div>
+
+                <ul id="show_playlists">Playlists</ul>
+
+            </div>
+        </script>
+
         <div id="header">SpotiFour
             <!--Search bar-->
             <input type="search" id="searchfield" style="font-size: 16pt; color: black"/><input type="submit" id="searchbtn" value="Search" style="background-color: black; font-size: 16pt"/>
             <!--Logout button-->
             <button class="btn btn-primary" id="logout" style="background-color: #66fcf1; color: black">Logout</button>
         </div>
-        <div id="mainPane">
-            <iframe id="iframe" src = "" width="400" height="300">
+
+        <iframe id="mainPane" src = "" width="108%" height="639" frameborder="0">
                 <p>Your browser does not support iframes.</p>
-            </iframe>
-            <div id="user-profile"></div>   <!--renders user-profile-template-->
-            <div id="oauth"></div>  <!--renders oauth template, currently empty-->
-        </div>
+        </iframe>
+
+        <div id="user-profile"></div>   <!--renders user-profile-template-->
+        <div id="oauth"></div>  <!--renders oauth template, currently empty-->
+
     </div>
+
 </div>
 
-<!--renders user info on the left side of the screen-->
-<script id="user-profile-template" type="text/x-handlebars-template">
-    <div id="sidebar">
-        <h2>Logged in as {{display_name}}</h2>
-        <ul id="show_playlists" style="font-family: LatoWeb">Playlists</ul>
-    </div>
 
-</script>
 
 <script id="oauth-template" type="text/x-handlebars-template"></script>
 
