@@ -11,6 +11,7 @@ var results = JSON.parse(sessionStorage.getItem('search_results'));
  */
 function displayResults(res){
     //albums
+    document.getElementById("head").innerText = "Artists";
     for(var i = 0; i < res.albums.items.length; i++){
         var item = res.albums.items[i].name;
         $('#albums').append('<li>'+ item + '</li>');
