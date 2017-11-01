@@ -1,42 +1,37 @@
-/*
-  Receives the JSON object generated
-  from the search submission
- */
-var results = JSON.parse(sessionStorage.getItem('search_results'));
-
-/*
-    Takes the JSON object and displays the
-    search results as a list. Currently only
-    displays eight albums and eight artists
- */
-function displayResults(res) {
-    //albums
-    document.getElementById('head').innerText = "Tracks";
-
+function displayTracks(tracks) {
     var tracksList = document.getElementById('show_tracks');
-    var listSize = results.tracks.items.length;
-
-    //Add # of songs to info
-    document.getElementById('headinfo').innerText = listSize + " songs";
+    var listSize = tracks.length;
 
     for (var i = 0; i < listSize; i++) {
-        var trck = results.tracks.items[i];
+        var trck = tracks[i];
+        console.log(tracks[0].name);
         var tmpl = document.getElementById('track-template').content.cloneNode(true);
+        //var artistTmpl = document.getElementById('artistList-template').content.cloneNode(true);
 
         //shortens long track names
         var trackName = trck.name;
         if (trackName.length > 50) {
-            var extra = (trackName.length - 50) * -1;
+            var extra = (trackName.length - 50) * -1
             trackName = trackName.slice(0, extra) + "...";
         }
-
         //write track name to the template
         tmpl.querySelector('.track-title').innerText = trackName;
+
+        /*code that gets all artists, not working*/
+        // var artistList = trck.artists;
+        // for (var j = 0; j < artistList.length; j++) {
+        //     //alert(artistList[j].name);
+        //
+        //     artistTmpl.querySelector('.artistList-artist').innerText = artistList[j].name;
+        //     artistTmpl.querySelector('.artistList-artist').id = artistList[j].id;
+        //     //tmpl.querySelector('.track-artist').appendChild(artistTmpl);
+        // }
+        //tmpl.querySelector('.track-artist').appendChild(artistTmpl);
 
         //shortens long artist name
         var artistName = trck.artists[0].name;  //get the first artist
         if (artistName.length > 25) {
-            var ex = (artistName.length - 25) * -1;
+            var ex = (artistName.length - 25) * -1
             artistName = artistName.slice(0, ex) + "...";
         }
         tmpl.querySelector('.track-artist').innerText = artistName; //write to html
@@ -44,7 +39,7 @@ function displayResults(res) {
         //shortens long album names
         var albumName = trck.album.name;
         if (albumName.length > 30) {
-            var ext = (albumName.length - 30) * -1;
+            var ext = (albumName.length - 30) * -1
             albumName = albumName.slice(0, ext) + "...";
         }
         //write to html
@@ -54,24 +49,25 @@ function displayResults(res) {
         tmpl.querySelector('.playbtn').id = trck.uri;   //add is for listener
         tracksList.appendChild(tmpl);   //write template to html
 
-        addAlbumListener(trck.album.id);    //add listener to album
+        addAlbumListener(trck.album.id, albumName);    //add listener to album
         addPlayListener(trck.uri);          //add listener to play button
-    }
 
+    }
 }
 
 /**
  * adds an event listener to album to change the iframe to show
  * a list of tracks in the album
  * @param albumID the album id
+ * @param albumName the album name
  */
-function addAlbumListener(albumID) {
+function addAlbumListener(albumID, albumName) {
     (function () {
         var id = document.getElementById(albumID);  //get element
         if (id) {
             id.addEventListener('click', function () {
                 parent.document.getElementById('mainPane').src = "AlbumTracks.html?albumid="
-                    + albumID;
+                    + albumID + "&albumName=" + albumName;
             }, false);
         }
     }());
@@ -114,10 +110,5 @@ function addPlayListener(uri) {
 
             }, false);
         }
-        else {
-            console.log("Error adding listener to " + uri);
-        }
     }());
 }
-
-displayResults(results);

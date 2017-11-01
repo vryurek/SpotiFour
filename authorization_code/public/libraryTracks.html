@@ -1,0 +1,61 @@
+<!--This file renders a list of tracks in a playlist-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/playlist.css">
+    <title>Playlist</title>
+</head>
+<body>
+
+
+<div id="header">
+    <h2 id="head">Your Songs</h2>
+    <div id="headinfo"></div>
+</div>
+
+<div class="pane">
+    <ul id="show_tracks">
+        <li class="track" style="background-color: rgb(50, 50, 50);">
+            <h2 class="track-title" style="padding-top: 0; color: #66fcf1">TITLE</h2>
+            <h2 class="cell1" style="padding-top: 0; color: #66fcf1">ARTIST</h2>
+            <h2 class="cell2" style="padding-top: 0; color: #66fcf1">ALBUM</h2>
+        </li>
+    </ul>  <!--list the tracks in a playlist-->
+</div>
+
+<!--template for displaying tracks-->
+<template id="track-template">
+    <li class="track">
+        <img class="playbtn" src="images/play-icon.png">
+        <div class="track-title"></div>
+        <div class="cell1">
+            <a href="#" class="track-artist"></a>
+        </div>
+        <div class="cell2">
+            <a href="#" class="track-album"></a>
+        </div>
+        <div class="cell3">
+            <a href="#" class="track-lyric">Lyrics</a>
+        </div>
+
+    </li>
+</template>
+
+<!--template for displaying list of artist in the track template, currently not working-->
+<!--<template id="artistList-template">-->
+<!--<li class="artist">-->
+<!--<a href="#" class="artistList-artist"></a>-->
+<!--</li>-->
+<!--</template>-->
+
+<!--         <div id="paneHeader">Songs</div>
+        <div id="mainPane">
+        <ul id="show_tracks" style="list-style: none; height: 100%"></ul>  <!--list the tracks in a playlist-->
+</div> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="javascripts/trackMethods.js"></script>
+<script src="javascripts/LibraryTracks.js"></script>
+</body>
+</html>
