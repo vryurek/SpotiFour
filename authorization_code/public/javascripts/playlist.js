@@ -140,6 +140,13 @@ function addPlayListener(uri) {
 
             id.addEventListener('click', function () {
                 if (id.src === ('http://localhost:8888/images/play-icon-hover.png')) {
+
+                    //revert all the buttons back to unselected play buttons
+                    var btns = document.getElementsByClassName('playbtn');
+                    for (var j = 0; j < btns.length; j++) {
+                        btns[j].src = "images/play-icon.png";
+                    }
+                    //change clicked button to pause button
                     id.src = "images/pause-icon.png";
                 } else {
                     id.src = "images/play-icon-hover.png";
