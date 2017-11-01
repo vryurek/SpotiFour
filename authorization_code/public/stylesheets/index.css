@@ -62,9 +62,9 @@ div#paneHeader{
     color: #66fcf1;
     font-family: LatoWeb;
     padding: 0;
-    margin: 10% 0 0 9%;
-  min-width: 0;
-    overflow-x: hidden;
+    margin: 15vh 0 0 7vw;
+    min-width: 0;
+    /*overflow-x: hidden;*/
 }
 
 /*style for side div that displays user info and playlists*/
@@ -76,11 +76,12 @@ div#sidebar{
     font-size: 20pt;
     top: 0;
     left: 0;
-    width: 20%;
-    height: 100%;
+    width: 20vw;
+    height: 100vh;
     border-right: 2px solid dimgray;
     color: #66fcf1;
-    padding-left: 1%;
+    padding:0 0 0 1vw;
+    margin: 0;
     /*overflow-y: scroll;*/
 
 }
