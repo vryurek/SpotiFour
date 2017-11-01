@@ -50,12 +50,12 @@ function displayResults(res) {
         //write to html
         tmpl.querySelector('.track-album').innerText = albumName;
 
-        addAlbumListener(trck.album.id);    //add listener to album
-        addPlayListener(trck.uri);          //add listener to play button
-
         tmpl.querySelector('.track-album').id = trck.album.id;  //add id for listener
         tmpl.querySelector('.playbtn').id = trck.uri;   //add is for listener
         tracksList.appendChild(tmpl);   //write template to html
+
+        addAlbumListener(trck.album.id);    //add listener to album
+        addPlayListener(trck.uri);          //add listener to play button
     }
 
 }
@@ -100,6 +100,13 @@ function addPlayListener(uri) {
 
             id.addEventListener('click', function () {
                 if (id.src === ('http://localhost:8888/images/play-icon-hover.png')) {
+
+                    //revert all the buttons back to unselected play buttons
+                    var btns = document.getElementsByClassName('playbtn');
+                    for (var j = 0; j < btns.length; j++) {
+                        btns[j].src = "images/play-icon.png";
+                    }
+                    //change clicked button to pause button
                     id.src = "images/pause-icon.png";
                 } else {
                     id.src = "images/play-icon-hover.png";
