@@ -49,7 +49,7 @@ function displayTracks(tracks) {
         tmpl.querySelector('.playbtn').id = trck.uri;   //add is for listener
         tracksList.appendChild(tmpl);   //write template to html
 
-        addAlbumListener(trck.album.id, albumName);    //add listener to album
+        addAlbumListener(trck.album.id, trck.album.name);    //add listener to album
         addPlayListener(trck.uri);          //add listener to play button
 
     }
@@ -104,6 +104,7 @@ function addPlayListener(uri) {
                     }
                     //change clicked button to pause button
                     id.src = "images/pause-icon.png";
+
                 } else {
                     id.src = "images/play-icon-hover.png";
                 }
