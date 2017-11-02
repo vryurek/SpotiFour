@@ -119,8 +119,7 @@
                     //show the loggedin screen
                     $('#login').hide();
                     $('#loggedin').show();
-
-
+                    //$('body').css("background", "black");
                 }
             });
 
