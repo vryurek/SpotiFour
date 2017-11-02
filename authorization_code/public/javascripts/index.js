@@ -113,6 +113,7 @@
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
                     addLibTrackListener();
+                    addLogoutListener();
                     getPlaylists(response); //retrieve playlists
 
 
@@ -166,13 +167,15 @@
         /**
          * returns the user to the login screen to re-approve the application or login as someone else
          */
-        var logoutbtn = document.getElementById('logout');
-        if (logoutbtn) {
-            logoutbtn.addEventListener('click', function() {
-                $('#login').show();
-                $('#loggedin').hide();
-
-            }, false);
+        function addLogoutListener() {
+            var logoutbtn = document.getElementById('logout');
+            if (logoutbtn) {
+                logoutbtn.addEventListener('click', function() {
+                    $('#login').show();
+                    $('#loggedin').hide();
+                }, false);
+            }
         }
+
     }
 
