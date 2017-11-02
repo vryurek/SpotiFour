@@ -15,14 +15,13 @@ body {
 }
 
 #header {
-    margin: 4% 0 0 2.5%;
+    martin: 1% 0 0 2%;
     border-bottom: 2px solid dimgray;
     font-family: LatoWeb;
     color: #66fcf1;
     text-align: left;
-    font-size: 36pt;
+    font-size: 2.5rem;
     width: 95%;
-    padding: 0;
 }
 
 #head {
