@@ -92,6 +92,7 @@
     }
 
 
+
     //if there is an error
     if (error) {
         alert('There was an error during the authentication');
@@ -111,6 +112,8 @@
                 },
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
+                    addLibTrackListener();
+                    addLogoutListener();
                     getPlaylists(response); //retrieve playlists
 
 
@@ -148,15 +151,31 @@
         }
 
         /**
+         * changes the iframe window to display the songs in the user's music library.
+         */
+        function addLibTrackListener () {
+            var libraryTracks = document.getElementById('libraryTracks');
+            console.log(libraryTracks);
+            if (libraryTracks) {
+                libraryTracks.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "libraryTracks.html";
+                }, false);
+            }
+        }
+
+
+        /**
          * returns the user to the login screen to re-approve the application or login as someone else
          */
-        var logoutbtn = document.getElementById('logout');
-        if (logoutbtn) {
-            logoutbtn.addEventListener('click', function() {
-                $('#login').show();
-                $('#loggedin').hide();
-
-            }, false);
+        function addLogoutListener() {
+            var logoutbtn = document.getElementById('logout');
+            if (logoutbtn) {
+                logoutbtn.addEventListener('click', function() {
+                    $('#login').show();
+                    $('#loggedin').hide();
+                }, false);
+            }
         }
+
     }
 
