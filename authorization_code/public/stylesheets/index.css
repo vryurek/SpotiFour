@@ -77,6 +77,25 @@ div#paneHeader {
     overflow-y: hidden;
 }
 
+#spotify-player {
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 89%;
+    z-index: 99;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#spotify-player object,
+#spotify-player embed {
+    position: absolute;
+    top: 89%;
+    left: 0;
+    width: 100%;
+    height: 11%;
+}
+
 /*style for side div that displays user info and playlists*/
 div#sidebar {
     background-color: #000000;
@@ -87,7 +106,7 @@ div#sidebar {
     top: 0;
     left: 0;
     width: 20vw;
-    height: 100vh;
+    height: 89vh;
     min-width: 200px;
     border-right: 2px solid dimgray;
     color: #66fcf1;
@@ -143,16 +162,16 @@ div#sidebar {
     font-family: LatoWeb;
 }
 
-body::-webkit-scrollbar {
-    width: 1em;
+::-webkit-scrollbar {
+    width: 0.5em;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: rgb(15, 15, 15);
 
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: dimgray;
     outline: 3px solid black;
 }
