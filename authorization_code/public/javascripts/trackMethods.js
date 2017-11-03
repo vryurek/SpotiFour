@@ -4,7 +4,7 @@ function displayTracks(tracks) {
 
     for (var i = 0; i < listSize; i++) {
         var trck = tracks[i];
-        console.log(tracks[0].name);
+        //console.log(tracks[0].name);
         var tmpl = document.getElementById('track-template').content.cloneNode(true);
         //var artistTmpl = document.getElementById('artistList-template').content.cloneNode(true);
 
@@ -31,7 +31,7 @@ function displayTracks(tracks) {
         //shortens long artist name
         var artistName = trck.artists[0].name;  //get the first artist
         if (artistName.length > 25) {
-            var ex = (artistName.length - 25) * -1
+            var ex = (artistName.length - 25) * -1;
             artistName = artistName.slice(0, ex) + "...";
         }
         tmpl.querySelector('.track-artist').innerText = artistName; //write to html
@@ -39,7 +39,7 @@ function displayTracks(tracks) {
         //shortens long album names
         var albumName = trck.album.name;
         if (albumName.length > 30) {
-            var ext = (albumName.length - 30) * -1
+            var ext = (albumName.length - 30) * -1;
             albumName = albumName.slice(0, ext) + "...";
         }
         //write to html
