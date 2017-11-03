@@ -157,16 +157,16 @@ div#sidebar{
     font-family: LatoWeb;
 }
 
-body::-webkit-scrollbar {
-    width: 1em;
+::-webkit-scrollbar {
+    width: 0.5em;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: rgb(15, 15, 15);
 
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: dimgray;
     outline: 3px solid black;
 }
