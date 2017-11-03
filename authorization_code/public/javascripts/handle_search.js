@@ -13,9 +13,11 @@ function displayArtists(artists) {
    // console.log(artists[0].images[0].url);
     var menu = document.getElementById('scrollmenu');
     for(var i = 0; i < artists.length; i++) {
-        var img = document.createElement("img");
-        img.src = artists[i].images[0].url;
-        menu.appendChild(img);
+        if(artists[i].images[0]) {
+            var img = document.createElement("img");
+            img.src = artists[i].images[0].url;
+            menu.appendChild(img);
+        }
     }
 
 }

@@ -25,7 +25,7 @@ function createSearchUrl(query, fields){
         if(i != fields.length - 1) url += ",";
     }
 
-    url += "&limit=8";
+    url += "&limit=20";
     return url;
 }
 
@@ -52,6 +52,8 @@ function sendSearch(url){
 }
 
 $("#searchbtn").click(function () {
-    var url = createSearchUrl($("#searchfield").val(), ["artist", "album", "track"]);
-    sendSearch(url);
+    if($("#searchfield").val().length !== 0) {
+        var url = createSearchUrl($("#searchfield").val(), ["artist", "album", "track"]);
+        sendSearch(url);
+    }
 });

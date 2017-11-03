@@ -17,7 +17,7 @@
         return hashParams;
     }
 
-    //user profile template
+    // //user profile template
     var userProfileSource = document.getElementById('user-profile-template').innerHTML,
         userProfileTemplate = Handlebars.compile(userProfileSource),
         userProfilePlaceholder = document.getElementById('user-profile');
@@ -68,7 +68,7 @@
                     var playlistID = list.items[i].id;
                     userID = list.items[i].owner.id;
                     var playlistName = list.items[i].name;
-                    console.log(playlistID);
+                    //console.log(playlistID);
                     $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistName + '</a></li>');
 
                     addPlaylistListener(playlistID, userID, playlistName);
