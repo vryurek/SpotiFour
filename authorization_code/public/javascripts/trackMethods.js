@@ -105,8 +105,31 @@ function addPlayListener(uri) {
                     //change clicked button to pause button
                     id.src = "images/pause-icon.png";
 
+                    parent.document.getElementById('spotify-player').src = 'https://open.spotify.com/embed?uri=' + uri;
+                    $.ajax({
+                        url: 'https://api.spotify.com/v1/me/player/play',
+                        headers: {
+                            'Authorization': 'Bearer ' + access_token
+                        },
+                        type: 'PUT',
+                        data: '{"uris": ["' + uri + '"]}',
+                        success: function(data) {
+                            //alert('Load was performed.');
+                        }
+                    });
                 } else {
                     id.src = "images/play-icon-hover.png";
+                    $.ajax({
+                        url: 'https://api.spotify.com/v1/me/player/pause',
+                        headers: {
+                            'Authorization': 'Bearer ' + access_token
+                        },
+                        type: 'PUT',
+                        success: function(data) {
+                            //alert('Load was performed.');
+                        }
+                    });
+
                 }
 
             }, false);
