@@ -39,7 +39,9 @@ app.get('/login', function(req, res) {          //login route
     res.cookie(stateKey, state);
 
     // your application requests authorization
-    var scope = 'user-read-private user-read-email user-library-read user-modify-playback-state';          //scopes
+    var scope = 'user-read-private user-read-email ' +
+        'user-library-read user-modify-playback-state ' +
+        'user-read-playback-state user-read-currently-playing';          //scopes
     res.redirect('https://accounts.spotify.com/authorize?' +    //redirect to spotify login
         querystring.stringify({
             show_dialog: true,      //requires user to approve login every time

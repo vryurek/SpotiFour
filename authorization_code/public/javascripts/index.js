@@ -113,6 +113,9 @@
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
                     addLibTrackListener();
+                    addLibAlbumListener();
+                    addGlobalTopListener();
+                    addCountryTopListener();
                     addLogoutListener();
                     getPlaylists(response); //retrieve playlists
 
@@ -162,6 +165,44 @@
             }
         }
 
+        /**
+         * changes the iframe window to display the albums in the user's music library.
+         */
+        function addLibAlbumListener () {
+            var libraryAlbums = document.getElementById('libraryAlbums');
+            console.log(libraryAlbums);
+            if (libraryAlbums) {
+                libraryAlbums.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "libraryAlbums.html";
+                }, false);
+            }
+        }
+
+        /**
+         * changes the iframe window to display the global top 50.
+         */
+        function addGlobalTopListener () {
+            var globalTop = document.getElementById('global-top');
+            console.log(globalTop);
+            if (globalTop) {
+                globalTop.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "popular.html?global=true";
+                }, false);
+            }
+        }
+
+        /**
+         * changes the iframe window to display the country top 50.
+         */
+        function addCountryTopListener () {
+            var countryTop = document.getElementById('us-top');
+            console.log(countryTop);
+            if (countryTop) {
+                countryTop.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "popular.html?global=false";
+                }, false);
+            }
+        }
 
         /**
          * returns the user to the login screen to re-approve the application or login as someone else

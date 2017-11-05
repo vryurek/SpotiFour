@@ -17,20 +17,17 @@
 <div class="pane">
     <ul id="show_tracks">
         <li class="listItem" style="background-color: rgb(50, 50, 50);">
-            <h2 class="track-title" style="padding-top: 0; color: #66fcf1">TITLE</h2>
-            <h2 class="cell3" style="padding-top: 0; color: #66fcf1">TIME</h2>
+            <h2 class="cell" style="padding-top: 0; color: #66fcf1">ALBUM</h2>
         </li>
-    </ul>  <!--list the tracks in an album-->
+    </ul>  <!--list the albums by an artist-->
 </div>
 
-<!--template for displaying tracks-->
-<template id="track-template">
+<!--template for displaying albums-->
+<template id="album-template">
     <li class="listItem">
-        <img class="playbtn" src="images/play-icon.png">
-        <div class="track-title"></div>
-        <div class="cell3" style="padding-left: 76%;"></div>
-        <div class="cell4">
-            <a href="#" class="track-lyric">Lyrics</a>
+        <img class="album-cover">
+        <div class="cell">
+            <a href="#" class="album-title"></a>
         </div>
     </li>
 </template>
@@ -39,6 +36,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="javascripts/trackMethods.js"></script>
-<script src="javascripts/AlbumTracks.js"></script>
+<script src="javascripts/artistAlbums.js"></script>
 </body>
 </html>
