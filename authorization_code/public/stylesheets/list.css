@@ -52,7 +52,21 @@ body {
     position: absolute;
 }
 
+.album-cover {
+    z-index: 4;
+    height: 9%;
+    padding: 0% 0 0 1%;
+    position: absolute;
+}
+
 #show_tracks {
+    list-style: none;
+    font-family: LatoWeb;
+    font-size: 12pt;
+    white-space: nowrap;
+}
+
+#library_albums {
     list-style: none;
     font-family: LatoWeb;
     font-size: 12pt;
@@ -61,32 +75,39 @@ body {
 
 .cell1 {
     display: table-cell;
-    padding: 1.5% 0 0 40%;
+    padding: 1.5% 0 0 35%;
     position: absolute;
     z-index: 3;
 }
 
 .cell2 {
     display: table-cell;
-    padding: 1.5% 0 0 60%;
+    padding: 1.5% 0 0 55%;
     position: absolute;
     z-index: 2;
 }
 
 .cell3 {
     display: table-cell;
-    padding: 1.5% 0 0 85%;
+    padding: 1.5% 0 0 75%;
     position: absolute;
     z-index: 1;
 }
 
-.track {
+.cell4 {
+    display: table-cell;
+    padding: 1.5% 0 0 90%;
+    position: absolute;
+    z-index: 1;
+}
+
+.listItem {
     border-bottom: 1px solid dimgray;
     min-height: 50px;
 
 }
 
-.track:hover, .offcanvas a:focus {
+.listItem:hover, .offcanvas a:focus {
     background-color: rgb(50, 50, 50);
 }
 
@@ -94,6 +115,17 @@ body {
     display: table-cell;
     position: absolute;
     padding: 1.5% 0 0 5%;
+}
+
+.cell {
+    display: table-cell;
+    position: absolute;
+    padding: 1.5% 0 0 8%;
+}
+
+.album-title {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .track-artist {
