@@ -17,7 +17,7 @@
         return hashParams;
     }
 
-    //user profile template
+    // //user profile template
     var userProfileSource = document.getElementById('user-profile-template').innerHTML,
         userProfileTemplate = Handlebars.compile(userProfileSource),
         userProfilePlaceholder = document.getElementById('user-profile');
@@ -68,7 +68,7 @@
                     var playlistID = list.items[i].id;
                     userID = list.items[i].owner.id;
                     var playlistName = list.items[i].name;
-                    console.log(playlistID);
+                    //console.log(playlistID);
                     $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistName + '</a></li>');
 
                     addPlaylistListener(playlistID, userID, playlistName);
@@ -113,6 +113,9 @@
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
                     addLibTrackListener();
+                    addLibAlbumListener();
+                    addGlobalTopListener();
+                    addCountryTopListener();
                     addLogoutListener();
                     getPlaylists(response); //retrieve playlists
 
@@ -120,8 +123,7 @@
                     //show the loggedin screen
                     $('#login').hide();
                     $('#loggedin').show();
-
-
+                    //$('body').css("background", "black");
                 }
             });
 
@@ -163,6 +165,44 @@
             }
         }
 
+        /**
+         * changes the iframe window to display the albums in the user's music library.
+         */
+        function addLibAlbumListener () {
+            var libraryAlbums = document.getElementById('libraryAlbums');
+            console.log(libraryAlbums);
+            if (libraryAlbums) {
+                libraryAlbums.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "libraryAlbums.html";
+                }, false);
+            }
+        }
+
+        /**
+         * changes the iframe window to display the global top 50.
+         */
+        function addGlobalTopListener () {
+            var globalTop = document.getElementById('global-top');
+            console.log(globalTop);
+            if (globalTop) {
+                globalTop.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "popular.html?global=true";
+                }, false);
+            }
+        }
+
+        /**
+         * changes the iframe window to display the country top 50.
+         */
+        function addCountryTopListener () {
+            var countryTop = document.getElementById('us-top');
+            console.log(countryTop);
+            if (countryTop) {
+                countryTop.addEventListener('click', function () {
+                    document.getElementById('mainPane').src = "popular.html?global=false";
+                }, false);
+            }
+        }
 
         /**
          * returns the user to the login screen to re-approve the application or login as someone else

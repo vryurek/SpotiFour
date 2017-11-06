@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="stylesheets/playlist.css">
+    <link rel="stylesheet" href="stylesheets/search.css">
+    <link rel="stylesheet" href="stylesheets/list.css">
     <title>Search Results</title>
 </head>
 <body>
+
+    <div id="scrollmenu">
+
+    </div>
+
     <div id="header">
         <h2 id="head"></h2>
         <div id="headinfo"></div>
@@ -40,9 +46,14 @@
         </li>
     </template>
 
+    <template id="artist-template">
+
+    </template>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="javascripts/index.js"></script>
+    <script src="javascripts/trackMethods.js"></script>
     <script src="javascripts/handle_search.js"></script>
     <script src="javascripts/search.js"></script>
 
