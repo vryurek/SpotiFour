@@ -160,6 +160,12 @@ div#sidebar {
     text-align: center;
     color: #66fcf1;
     font-family: LatoWeb;
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(black, #505050);
+    padding-top: 18%;
+    left: 0;
 }
 
 ::-webkit-scrollbar {
