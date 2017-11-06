@@ -16,7 +16,7 @@ login screen. We have created a Spotify account specifically for this project (L
 - Ability to search for songs, artists, and albums and retrieve each component's music
 - Top 50 songs globally and in the United States
 - View music in the user's Spotify library, including playlists
-- Ability to play music using the Spotify play button (Full song when using a premium account, plays 30s previews otherwise)
+- Ability to play music using the Spotify play button (Full song when using a premium account with the Spotify client downloaded, plays 30s previews otherwise)
 - TODO: ability to retrieve lyrics for songs 
 
 
