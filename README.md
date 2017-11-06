@@ -20,7 +20,7 @@ login screen. We have created a Spotify account specifically for this project (L
 - TODO: ability to retrieve lyrics for songs 
 
 
-Authors:\
+### Authors
 Veronica Yurek\
 Sarah Curtis\
 Evan de Jesus\
