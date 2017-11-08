@@ -107,7 +107,7 @@ div#sidebar {
     left: 0;
     width: 20vw;
     height: 89vh;
-    min-width: 200px;
+    min-width: 250px;
     border-right: 2px solid dimgray;
     color: #66fcf1;
     padding: 0 0 0 1vw;
@@ -160,6 +160,12 @@ div#sidebar {
     text-align: center;
     color: #66fcf1;
     font-family: LatoWeb;
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(black, #505050);
+    padding-top: 18%;
+    left: 0;
 }
 
 ::-webkit-scrollbar {
