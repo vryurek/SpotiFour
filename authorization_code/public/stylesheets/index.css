@@ -72,7 +72,7 @@ div#paneHeader {
     font-family: LatoWeb;
     position: absolute;
     left: 20%;
-    top: 20%;
+    top: 15%;
     overflow-x: hidden;
     overflow-y: hidden;
 }
