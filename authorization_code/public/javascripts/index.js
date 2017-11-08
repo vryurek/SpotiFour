@@ -68,8 +68,17 @@
                     var playlistID = list.items[i].id;
                     userID = list.items[i].owner.id;
                     var playlistName = list.items[i].name;
+                    var playlistNameShort;
+
+                    if (playlistName.length > 19) {
+                        var extra = (playlistName.length - 19) * -1;
+                        playlistNameShort = playlistName.slice(0, extra) + "...";
+                    }
+                    else
+                        playlistNameShort = playlistName;
+
                     //console.log(playlistID);
-                    $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistName + '</a></li>');
+                    $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistNameShort + '</a></li>');
 
                     addPlaylistListener(playlistID, userID, playlistName);
 
