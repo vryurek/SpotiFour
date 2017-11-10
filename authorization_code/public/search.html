@@ -20,7 +20,7 @@
     </div>
     <div class="pane">
         <ul id="show_tracks">
-            <li class="track" style="background-color: rgb(50, 50, 50);">
+            <li class="listItem" style="background-color: rgb(50, 50, 50);">
                 <h2 class="track-title" style="padding-top: 0; color: #66fcf1">TITLE</h2>
                 <h2 class="cell1" style="padding-top: 0; color: #66fcf1">ARTIST</h2>
                 <h2 class="cell2" style="padding-top: 0; color: #66fcf1">ALBUM</h2>
@@ -29,8 +29,9 @@
 
     </div>
 
+    <!--template for displaying tracks-->
     <template id="track-template">
-        <li class="track">
+        <li class="listItem">
             <img class="playbtn" src="images/play-icon.png">
             <div class="track-title"></div>
             <div class="cell1">
@@ -39,10 +40,10 @@
             <div class="cell2">
                 <a href="#" class="track-album"></a>
             </div>
-            <div class="cell3">
+            <div class="cell3" style="padding-left: 76%;"></div>
+            <div class="cell4">
                 <a href="#" class="track-lyric">Lyrics</a>
             </div>
-
         </li>
     </template>
 

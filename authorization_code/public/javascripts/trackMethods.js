@@ -9,7 +9,6 @@ function displayTracks(tracks) {
     for (var i = 0; i < listSize; i++) {
         var trck = tracks[i]; //current track
         var tmpl = document.getElementById('track-template').content.cloneNode(true);
-        //var artistTmpl = document.getElementById('artistList-template').content.cloneNode(true);
 
         //shortens long track names
         var trackName = trck.name;
@@ -19,17 +18,6 @@ function displayTracks(tracks) {
         }
         //write track name to the template
         tmpl.querySelector('.track-title').innerText = trackName;
-
-        /*code that gets all artists, not working*/
-        // var artistList = trck.artists;
-        // for (var j = 0; j < artistList.length; j++) {
-        //     //alert(artistList[j].name);
-        //
-        //     artistTmpl.querySelector('.artistList-artist').innerText = artistList[j].name;
-        //     artistTmpl.querySelector('.artistList-artist').id = artistList[j].id;
-        //     //tmpl.querySelector('.track-artist').appendChild(artistTmpl);
-        // }
-        //tmpl.querySelector('.track-artist').appendChild(artistTmpl);
 
         //shortens long artist name
         var artistName = trck.artists[0].name;  //get the first artist
