@@ -123,6 +123,7 @@
                     if(response.display_name == null)
                         response.display_name = response.id;
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
+
                     addLibTrackListener();
                     addLibAlbumListener();
                     addGlobalTopListener();
