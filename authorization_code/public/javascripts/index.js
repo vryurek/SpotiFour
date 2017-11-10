@@ -112,6 +112,7 @@
                 },
                 success: function(response) {
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
+
                     addLibTrackListener();
                     addLibAlbumListener();
                     addGlobalTopListener();
