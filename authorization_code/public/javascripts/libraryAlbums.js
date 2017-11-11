@@ -32,7 +32,7 @@ $.ajax ({
 
             //add listeners
             addAlbumListener(albm.id, albm.name, albm.artists[0].name, i.toString());    //add listener to album
-            addArtistListener(albm.artists[0].name, albm.artists[0].id, albm.artists[0].id + "" + i);    //add listener to album
+            addArtistListener(albm.artists[0].name, albm.artists[0].id, albm.artists[0].id + "" + i);    //add listener to artist
 
             //add a break in the list if there are four albums on one line.
             if (i > 0 && (((i + 1) % 4) === 0)) {

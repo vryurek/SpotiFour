@@ -14,8 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-#header {
-    martin: 1% 0 0 2%;
+.header {
     border-bottom: 2px solid dimgray;
     font-family: LatoWeb;
     color: #66fcf1;
