@@ -14,10 +14,12 @@
     <!--The initial login page-->
     <div id="login">
         <div class="wrapper">
-            <h1>Please login with Spotify to continue</h1>
+            <img src="images/SpotiFourLogo.png" id="Logo" alt="Logo">
+            <h4>Please login with Spotify to continue</h4>
             <!--Login button-->
             <a href="/login" class="btn btn-primary">Log in with Spotify</a>
         </div>
+
     </div>
 
     <!--The page once you login-->
@@ -27,7 +29,7 @@
 
             <div id="sidebar">
                 <!--image here-->
-
+                <img src="images/SpotiFourLogoCircle.png" id="sideBarLogo" alt="Logo">
                 <div class="sbHeader">Welcome, <br> {{display_name}}</div>
                 <div>
                     <!--Logout button-->
@@ -48,13 +50,14 @@
             </div>
         </script>
 
-        <div id="header">SpotiFour
+        <div id="header"> Lyricon
             <!--Search bar-->
+
             <input type="search" id="searchfield" style="font-size: 16pt; color: black"/><input type="submit" id="searchbtn" value="Search" style="background-color: black; font-size: 16pt"/>
 
         </div>
 
-        <iframe id="mainPane" src="" width="80%" height="74%" frameborder="0">
+        <iframe id="mainPane" src="SpotiFourLogo.html" width="80%" height="74%" frameborder="0" >
                 <p>Your browser does not support iframes.</p>
         </iframe>
 
