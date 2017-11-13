@@ -57,3 +57,9 @@ $("#searchbtn").click(function () {
         sendSearch(url);
     }
 });
+
+$('#searchfield').keypress(function(e){
+    if(e.which == 13){//Enter key pressed
+        $('#searchbtn').click();//Trigger search button click event
+    }
+});
