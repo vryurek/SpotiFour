@@ -14,8 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-#header {
-    martin: 1% 0 0 2%;
+.header {
     border-bottom: 2px solid dimgray;
     font-family: LatoWeb;
     color: #66fcf1;
@@ -145,6 +144,14 @@ body {
 
 #show_tracks li a:hover, .offcanvas a:focus {
     color: #66fcf1;
+}
+
+.lyric-drop {
+    display: none;
+    background-color: dimgray;
+    min-height: 300px;
+    padding: 50px 0 0 0;
+
 }
 
 body::-webkit-scrollbar {

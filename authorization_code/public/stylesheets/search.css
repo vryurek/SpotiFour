@@ -1,36 +1,115 @@
-div#scrollmenu {
+div.scrollmenu {
     background-color: #000000;
     overflow: auto;
     white-space: nowrap;
 }
 
-div#scrollmenu img {
+div.scrollmenu img {
     height: 200px;
     width: 200px;
 }
 
-div#scrollmenu a{
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-}
+/*div#scrollmenu a{*/
+    /*display: inline-block;*/
+    /*color: white;*/
+    /*text-align: center;*/
+    /*padding: 14px;*/
+    /*text-decoration: none;*/
+/*}*/
 
-div#scrollmenu a:hover {
-    background-color: dimgray;
-}
+/*div#scrollmenu a:hover {*/
+    /*background-color: dimgray;*/
+/*}*/
 
-div#scrollmenu::-webkit-scrollbar {
+div.scrollmenu::-webkit-scrollbar {
     width: 4em;
 }
 
-div#scrollmenu::-webkit-scrollbar-track {
+div.scrollmenu::-webkit-scrollbar-track {
     background-color: rgb(15, 15, 15);
 
 }
 
-div#scrollmenu::-webkit-scrollbar-thumb {
+div.scrollmenu::-webkit-scrollbar-thumb {
     background-color: dimgray;
     outline: 3px solid black;
 }
+
+#albumsinfo {
+    color: #ffffff;
+    font-size: 11pt;
+    display: table-cell;
+    padding: 0 0 0 5%;
+    white-space: nowrap;
+}
+
+#artistsinfo {
+    color: #ffffff;
+    font-size: 11pt;
+    display: table-cell;
+    padding: 0 0 0 5%;
+    white-space: nowrap;
+}
+
+.sub-head {
+    padding: 15% 0 0 0;
+    margin: 0;
+    display: table-cell;
+}
+
+#show_artists {
+    list-style: none;
+    font-family: LatoWeb;
+    font-size: 12pt;
+    /*color: #ffffff;*/
+    text-decoration: none;
+}
+
+#show_albums {
+    list-style: none;
+    font-family: LatoWeb;
+    font-size: 12pt;
+    color: #66fcf1;
+    text-decoration: none;
+}
+
+ul#show_artists li {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    padding: 0 5% 0 0;
+}
+
+ul#show_albums li {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    padding: 0 5% 0 0;
+}
+
+.album-title:hover {
+    color: #ffffff;
+}
+
+.artist-title:hover {
+    color: #66fcf1;
+}
+
+.album-title {
+    display: block;
+    text-decoration: none;
+    color: #66fcf1;
+}
+
+.artist-title {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+
+
+
+
+

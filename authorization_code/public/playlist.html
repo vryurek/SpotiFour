@@ -9,7 +9,7 @@
 <body>
 
 
-        <div id="header">
+        <div class="header">
             <h2 id="head"></h2>
             <div id="headinfo"></div>
         </div>
@@ -31,29 +31,21 @@
                 <img class="playbtn" src="images/play-icon.png">
                 <div class="track-title"></div>
                 <div class="cell1">
-                    <a href="#" class="track-artist"></a>
+                    <a href="javascript:void(0)" class="track-artist"></a>
                 </div>
                 <div class="cell2">
-                    <a href="#" class="track-album"></a>
+                    <a href="javascript:void(0)" class="track-album"></a>
                 </div>
                 <div class="cell3" style="padding-left: 76%;"></div>
                 <div class="cell4">
-                    <a href="#" class="track-lyric">Lyrics</a>
+                    <a href="javascript:void(0)" class="track-lyric">Lyrics</a>
                 </div>
 
             </li>
+            <div class="lyric-drop"> </div>
         </template>
 
-        <!--template for displaying list of artist in the track template, currently not working-->
-        <!--<template id="artistList-template">-->
-            <!--<li class="artist">-->
-                <!--<a href="#" class="artistList-artist"></a>-->
-            <!--</li>-->
-        <!--</template>-->
 
-<!--         <div id="paneHeader">Songs</div>
-        <div id="mainPane">
-        <ul id="show_tracks" style="list-style: none; height: 100%"></ul>  <!--list the tracks in a playlist-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="javascripts/trackMethods.js"></script>

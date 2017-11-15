@@ -41,12 +41,14 @@ function displayTracks(tracks) {
         tmpl.querySelector('.track-album').id = i.toString();  //add id for listener
         tmpl.querySelector('.track-artist').id = trck.artists[0].id + "" + i; //add id for listener
         tmpl.querySelector('.playbtn').id = trck.uri;   //add id for listener
+        tmpl.querySelector('.track-lyric').id = "lyric" + "" + i.toString() + "" + i.toString();
+        tmpl.querySelector('.lyric-drop').id = i.toString() + "" + "lyric";
         tracksList.appendChild(tmpl);   //write template to html
 
         addAlbumListener(trck.album.id, trck.album.name, trck.artists[0].name, i.toString());    //add listener to album
         addArtistListener(trck.artists[0].name, trck.artists[0].id, trck.artists[0].id + "" + i);    //add listener to album
         addPlayListener(trck.uri);          //add listeners to play button
-
+        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric");
     }
 }
 
@@ -87,6 +89,28 @@ function addArtistListener(artistName, artistID, num) {
             }, false);
         }
     }());
+}
+
+/**
+ * adds event listener to "lyric" so that lyrics will be displayed
+ * when clicked.
+ * @param id the id of the lyric item
+ * @param dropID the id of the drop down
+ */
+function addLyricListener(id, dropID) {
+    (function () {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', function () {
+                if ($('#' + dropID).is(':hidden')) {
+                    $('#' + dropID).show();
+                } else {
+                    $('#' + dropID).hide();
+                }
+
+            }, false);
+        }
+    })();
 }
 
 /**

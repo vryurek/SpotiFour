@@ -36,13 +36,12 @@
                     <button class="btn btn-primary" id="logout" style="background-color: #66fcf1; color: black">Logout</button> <br> <br>
                 </div>
                 <div class="h"> Browse Popular
-                    <br><a id="global-top" href="#">Global Top 50</a><br>
-                    <a id="us-top" href="#">US Top 50</a><br>
+                    <br><a id="global-top" href="javascript:void(0)">Global Top 50</a><br>
+                    <a id="us-top" href="javascript:void(0)">US Top 50</a><br>
                 </div>
                 <div class="h"> Your Library
-                    <br><a id="libraryTracks" href="#">Songs</a><br>
-                    <a id="libraryAlbums" href="#">Albums</a><br>
-                    <a href="#">Artists</a><br>
+                    <br><a id="libraryTracks" href="javascript:void(0)">Songs</a><br>
+                    <a id="libraryAlbums" href="javascript:void(0)">Albums</a><br>
                 </div>
 
                 <ul id="show_playlists">Playlists</ul>
@@ -53,7 +52,9 @@
         <div id="header"> Lyricon
             <!--Search bar-->
 
+
             <input type="search" id="searchfield" style="font-size: 16pt; color: black"/><input type="submit" id="searchbtn" value="Search" style="background-color: black; font-size: 16pt"/>
+         
 
         </div>
 
@@ -80,7 +81,7 @@
 <script src="javascripts/index.js"></script>
 <script>
     localStorage.setItem('access', access_token);       //store the access token for use in other pages
-    localStorage.setItem('refresh', refresh_token);     //store the refresh token for use in other pages
+    localStorage.setItem('refresh', refresh_token);     //store the refresh-token for use in other pages
 </script>
 <script src="javascripts/search.js"></script>
 </body>
