@@ -22,6 +22,6 @@ login screen. We have created a Spotify account specifically for this project (L
 
 ### Authors
 Veronica Yurek\
-Sarah Curtis\
+Sarah Curtis Test\
 Evan de Jesus\
 Dylan Gaines
