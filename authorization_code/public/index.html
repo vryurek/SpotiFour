@@ -35,10 +35,12 @@
                     <!--Logout button-->
                     <button class="btn btn-primary" id="logout" style="background-color: #66fcf1; color: black">Logout</button> <br> <br>
                 </div>
+                <!--Songs Spotify has designated as popular-->
                 <div class="h"> Browse Popular
                     <br><a id="global-top" href="javascript:void(0)">Global Top 50</a><br>
                     <a id="us-top" href="javascript:void(0)">US Top 50</a><br>
                 </div>
+                <!--Songs the user has saved in their Spotify library-->
                 <div class="h"> Your Library
                     <br><a id="libraryTracks" href="javascript:void(0)">Songs</a><br>
                     <a id="libraryAlbums" href="javascript:void(0)">Albums</a><br>
@@ -58,6 +60,7 @@
 
         </div>
 
+        <!--The main pane is an iframe with dynamic content based on what the user clicks-->
         <iframe id="mainPane" src="SpotiFourLogo.html" width="80%" height="74%" frameborder="0" >
                 <p>Your browser does not support iframes.</p>
         </iframe>
