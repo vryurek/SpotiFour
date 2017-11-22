@@ -40,9 +40,12 @@ function showTracks(url) {
             document.getElementById('headinfo').innerText = "Playlist - " + tracks.items.length + " songs";
             var trackList = new Array(0);
             for (var i = 0; i < tracks.items.length; i++) {
-                trackList.push(tracks.items[i].track);
+                trackList.push(tracks.items[i].track);  //add track object to list from playlist track object
             }
             displayTracks(trackList);
         }
     });
+
 }
+
+

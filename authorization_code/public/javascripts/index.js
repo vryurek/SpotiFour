@@ -1,7 +1,7 @@
 /**
  * This js file contains all the javscript code necessary for index.html. A
  * skeleton of this code was provided by spotify as an example, but it has
- * been modified and added to.
+ * been modified and added to. Handles login/logout and displays the side menu and search bar
  */
     /**
      * Obtains parameters from the hash of the URL
@@ -38,6 +38,7 @@
     /**
        After the user has logged in, this method retrieves a list of the user's playlists.
        response contains the user information.
+        @param response the user object
      */
     function getPlaylists (response) {
         var playlistLink =  'https://api.spotify.com/v1/users/' + response.id +'/playlists';
@@ -47,6 +48,7 @@
     /**
        Appends each playlist to an unordered list "show_playlists"
        Accepts the url of the first playlist as a parameter
+        @param url the url to access the users playlists
      */
     function addPlaylist(url) {
         if (url === null) { //if the url is null, return
@@ -62,14 +64,12 @@
                 var userID;
                 //append each playlist to show_playlists
                 for (var i = 0; i < list.items.length; i++) {
-                    // $('#show_playlists').append('<li><a href="playlist.html?userid=' +
-                    //     list.items[i].owner.id + '&playlistid=' + list.items[i].id +
-                    //     '">' + list.items[i].name + '</a></li>')
-                    var playlistID = list.items[i].id;
-                    userID = list.items[i].owner.id;
+                    var playlistID = list.items[i].id;  //playlist id
+                    userID = list.items[i].owner.id;    //the user id
                     var playlistName = list.items[i].name;
-                    var playlistNameShort;
+                    var playlistNameShort;  //shortened playlist name
 
+                    //shortens long playlist names
                     if (playlistName.length > 19) {
                         var extra = (playlistName.length - 19) * -1;
                         playlistNameShort = playlistName.slice(0, extra) + "...";
@@ -77,22 +77,28 @@
                     else
                         playlistNameShort = playlistName;
 
-                    //console.log(playlistID);
+                    //append playlists to unordered list
                     $('#show_playlists').append('<li><a id="' + playlistID + '" href="#">' + playlistNameShort + '</a></li>');
 
-                    addPlaylistListener(playlistID, userID, playlistName);
+                    addPlaylistListener(playlistID, userID, playlistName);  //add listener
 
                 }
-                addPlaylist(list.next); //move on to the next playlist, if there is one
             }
         });
     }
 
-    function addPlaylistListener(listID, userID, playlistName) {
+/**
+ * Adds a listener to the playlist link that redirects the iframe
+ * @param listID    the playlist id
+ * @param userID    the user's id
+ * @param playlistName  the playlist name
+ */
+function addPlaylistListener(listID, userID, playlistName) {
         (function () {
             var id = document.getElementById(listID);
             if (id) {
                 id.addEventListener('click', function () {
+                    //change iframe source to show the playlist's tracks
                     document.getElementById('mainPane').src = "playlist.html?userid=" + userID
                         + "&playlistid=" + listID + "&playlistname=" + playlistName;
                 }, false);
@@ -124,6 +130,7 @@
                         response.display_name = response.id;
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);   //display user info
 
+                    //add listeners
                     addLibTrackListener();
                     addLibAlbumListener();
                     addGlobalTopListener();
@@ -208,7 +215,6 @@
          */
         function addCountryTopListener () {
             var countryTop = document.getElementById('us-top');
-            console.log(countryTop);
             if (countryTop) {
                 countryTop.addEventListener('click', function () {
                     document.getElementById('mainPane').src = "popular.html?global=false";

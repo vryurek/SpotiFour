@@ -1,7 +1,7 @@
 /**
  * this file display up to 50 of the user's saved albums.
  */
-var access_token = localStorage.getItem('access');
+var access_token = localStorage.getItem('access');  //get access token
 
 //get library albums
 $.ajax ({
