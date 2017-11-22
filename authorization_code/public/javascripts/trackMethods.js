@@ -1,14 +1,19 @@
 /**
+ * This file creates and formats a list of tracks and
+ * adds listeners to all the links and play buttons
+ */
+
+/**
  * this function displays tracks in a list format
  * @param tracks    an array of track objects
  */
 function displayTracks(tracks) {
-    var tracksList = document.getElementById('show_tracks');
+    var tracksList = document.getElementById('show_tracks');    //where to append the list
     var listSize = tracks.length;
 
     for (var i = 0; i < listSize; i++) {
         var trck = tracks[i]; //current track
-        var tmpl = document.getElementById('track-template').content.cloneNode(true);
+        var tmpl = document.getElementById('track-template').content.cloneNode(true);   //get the template
 
         //shortens long track names
         var trackName = trck.name;
@@ -34,7 +39,7 @@ function displayTracks(tracks) {
             albumName = albumName.slice(0, ext) + "...";
         }
 
-        //write to html
+        //write album name and track duration to html
         tmpl.querySelector('.track-album').innerText = albumName;
         tmpl.querySelector('.cell3').innerText = getDuration(trck.duration_ms);
 
@@ -115,7 +120,8 @@ function addLyricListener(id, dropID) {
 
 /**
  * adds event listeners to the play button so that the image will
- * change on hover and click.
+ * change on hover and click. Also allows for playback control with
+ * premium accounts.
  * @param uri   track uri, for playing music later, also acts as an id
  */
 function addPlayListener(uri) {
@@ -204,10 +210,10 @@ function addPlayListener(uri) {
 }
 
 /**
- *This function returns the duration of the song in minutes:seconds
+ *This function returns the duration of the song in minutes:seconds format
  *when given the time in milliseconds
  * @param time the duration of the track in ms
- * @return string the duration in minutes:seconds
+ * @return string the duration in minutes:seconds format
  **/
 function getDuration(time) {
     var minutes = Math.floor(time / 60000);
