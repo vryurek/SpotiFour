@@ -48,7 +48,7 @@ function displayTracks(tracks) {
         addAlbumListener(trck.album.id, trck.album.name, trck.artists[0].name, i.toString());    //add listener to album
         addArtistListener(trck.artists[0].name, trck.artists[0].id, trck.artists[0].id + "" + i);    //add listener to album
         addPlayListener(trck.uri);          //add listeners to play button
-        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric");
+        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric", trackName, artistName);
     }
 }
 
@@ -97,13 +97,21 @@ function addArtistListener(artistName, artistID, num) {
  * @param id the id of the lyric item
  * @param dropID the id of the drop down
  */
-function addLyricListener(id, dropID) {
+function addLyricListener(id, dropID, name, artist) {
     (function () {
         var el = document.getElementById(id);
         if (el) {
             el.addEventListener('click', function () {
                 if ($('#' + dropID).is(':hidden')) {
                     $('#' + dropID).show();
+                    $.ajax({
+                        url: newURL(name, artist),
+                        success: function(res){
+                            var html = lyricsParse(res);
+                            console.log(html);
+                        }
+
+                    });
                 } else {
                     $('#' + dropID).hide();
                 }
@@ -111,6 +119,35 @@ function addLyricListener(id, dropID) {
             }, false);
         }
     })();
+}
+
+function newURL(name, artist){
+    var url = "https://www.azlyrics.com/lyrics/";
+
+    name = name.toLowerCase();
+    name = name.split(' ').join('');
+    name = name.replace(/[&\/\\!#,+()$~%.'":*?<>{}]/g, '');
+
+    artist = artist.toLowerCase();
+    artist = artist.split(' ').join('');
+    artist = artist.replace(/[&\/\\!#,+()$~%.'":*?<>{}]/g, '');
+
+    if(artist.substring(0,3) == "the"){
+        artist = artist.substring(3);
+    }
+
+    console.log(artist);
+    url += artist + "/" + name + ".html";
+    return url;
+}
+
+function lyricsParse(html){
+    var marker1 = "<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->";
+    var marker2 = "<!-- MxM banner -->";
+    var index1 = html.search(marker1);
+    var index2 = html.search(marker2);
+
+    return html.substring(index1, index2);
 }
 
 /**
