@@ -113,7 +113,8 @@ function addLyricListener(id, dropID, name, artist) {
                         url: newURL(name, artist),
                         success: function(res){
                             var html = lyricsParse(res);
-                            console.log(html);
+                            //console.log(html);
+                            $('#' + dropID).append(html);
                         }
 
                     });
