@@ -40,8 +40,13 @@ $.ajax({    //get track info
 
             //get duration of the track
             tmpl.querySelector('.cell3').innerText = getDuration(trck.duration_ms);
+
+            tmpl.querySelector('.track-lyric').id = "lyric" + "" + i.toString() + "" + i.toString();
+            tmpl.querySelector('.lyric-drop').id = i.toString() + "" + "lyric";
+
             tracksList.appendChild(tmpl);   //write template to html
             addPlayListener(trck.uri);          //add listener to play button
+            addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric", trackName, artistName);
 
         }
 

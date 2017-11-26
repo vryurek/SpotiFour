@@ -101,6 +101,8 @@ function addArtistListener(artistName, artistID, num) {
  * when clicked.
  * @param id the id of the lyric item
  * @param dropID the id of the drop down
+ * @param name the name of the track
+ * @param artist the name of the artist
  */
 function addLyricListener(id, dropID, name, artist) {
     (function () {
@@ -108,16 +110,18 @@ function addLyricListener(id, dropID, name, artist) {
         if (el) {
             el.addEventListener('click', function () {
                 if ($('#' + dropID).is(':hidden')) {
-                    $('#' + dropID).show();
-                    $.ajax({
-                        url: newURL(name, artist),
+                    $.ajax({    //use CORS proxy server
+                        url: 'https://crossorigin.me/' + newURL(name, artist),
+                        error: function() {
+                            $('#' + dropID).append("Lyrics Unavailable");
+                        },
                         success: function(res){
                             var html = lyricsParse(res);
-                            //console.log(html);
                             $('#' + dropID).append(html);
                         }
 
                     });
+                    $('#' + dropID).show();
                 } else {
                     $('#' + dropID).hide();
                 }
