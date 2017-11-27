@@ -44,16 +44,16 @@ function displayTracks(tracks) {
         tmpl.querySelector('.cell3').innerText = getDuration(trck.duration_ms);
 
         tmpl.querySelector('.track-album').id = i.toString();  //add id for listener
-        tmpl.querySelector('.track-artist').id = trck.artists[0].id + "" + i; //add id for listener
+        tmpl.querySelector('.track-artist').id = trck.artists[0].id + "" + i.toString(); //add id for listener
         tmpl.querySelector('.playbtn').id = trck.uri;   //add id for listener
         tmpl.querySelector('.track-lyric').id = "lyric" + "" + i.toString() + "" + i.toString();
-        tmpl.querySelector('.lyric-drop').id = i.toString() + "" + "lyric";
+        tmpl.querySelector('.lyric-drop').id = i.toString() + "" + i.toString() + "" + "lyric";
         tracksList.appendChild(tmpl);   //write template to html
 
         addAlbumListener(trck.album.id, trck.album.name, trck.artists[0].name, i.toString());    //add listener to album
         addArtistListener(trck.artists[0].name, trck.artists[0].id, trck.artists[0].id + "" + i);    //add listener to album
         addPlayListener(trck.uri);          //add listeners to play button
-        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric", trck.name, trck.artists[0].name);
+        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + i.toString() + "" + "lyric", trck.name, trck.artists[0].name);
     }
 }
 
@@ -111,26 +111,28 @@ function addLyricListener(id, dropID, name, artist) {
         if (el) {
             el.addEventListener('click', function () {
                 if ($('#' + dropID).is(':hidden')) {
-                    $.ajax({    //use CORS proxy server
-                        url: 'https://crossorigin.me/' + newURL(name, artist),
-                        error: function() {
-                            //append unavailable message if not already appended
-                            if (!appended) {
-                                $('#' + dropID).append("Lyrics Unavailable");
-                                appended = true;
-                            }
-                        },
-                        success: function(res){
-                            var html = lyricsParse(res);
-                            //append lyrics if not already appended
-                            if (!appended) {
-                                $('#' + dropID).append(html);
-                                appended = true;
+                    if (!appended) {
+                        $.ajax({    //use CORS proxy server
+                            url: 'http://cors-proxy.htmldriven.com/?url=' + newURL(name, artist),
+                            error: function () {
+                                //append unavailable message if not already appended
+                                //if (!appended) {
+                                    $('#' + dropID).append("Lyrics Unavailable");
+                                    appended = true;
+                                //}
+                            },
+                            success: function (res) {
+                                var html = lyricsParse(res);
+                                //append lyrics if not already appended
+                                //if (!appended) {
+                                    $('#' + dropID).append(html);
+                                    appended = true;
+                                //}
+
                             }
 
-                        }
-
-                    });
+                        });
+                    }
                     $('#' + dropID).show();
                 } else {
                     $('#' + dropID).hide();
@@ -175,10 +177,10 @@ function newURL(name, artist){
 function lyricsParse(html){
     var marker1 = "that. -->";
     var marker2 = "<!-- MxM banner -->";
-    var index1 = html.search(marker1);
-    var index2 = html.search(marker2);
+    var index1 = html.body.search(marker1);
+    var index2 = html.body.search(marker2);
 
-    return html.substring(index1+9, index2);
+    return html.body.substring(index1+9, index2);
 }
 
 /**
