@@ -173,12 +173,12 @@ function newURL(name, artist){
  * @returns {string}    the song lyrics in html format
  */
 function lyricsParse(html){
-    var marker1 = "<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->";
+    var marker1 = "that. -->";
     var marker2 = "<!-- MxM banner -->";
     var index1 = html.search(marker1);
     var index2 = html.search(marker2);
 
-    return html.substring(index1, index2);
+    return html.substring(index1+9, index2);
 }
 
 /**
