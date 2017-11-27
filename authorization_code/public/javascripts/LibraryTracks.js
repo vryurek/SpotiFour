@@ -4,12 +4,9 @@
 var access_token = localStorage.getItem('access');
 var num = 0;    //number of tracks
 
-//max amount of tracks you can query from spotify is 50, so loop
-//in order to get more than 50.
-for (var j = 0; j < 5; j++) {
-    (function () {
+//max amount of tracks you can query from spotify is 50, so get first 50 tracks in music library
         $.ajax({    //get track info
-            url: 'https://api.spotify.com/v1/me/tracks?offset=' + (j * 50) + '&limit=50',
+            url: 'https://api.spotify.com/v1/me/tracks',
             headers: {
                 'Authorization': 'Bearer ' + access_token
             },
@@ -26,7 +23,4 @@ for (var j = 0; j < 5; j++) {
 
             }
         });
-    })()
-
-}
 
