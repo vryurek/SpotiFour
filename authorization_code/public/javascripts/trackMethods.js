@@ -107,17 +107,27 @@ function addArtistListener(artistName, artistID, num) {
 function addLyricListener(id, dropID, name, artist) {
     (function () {
         var el = document.getElementById(id);
+        var appended = false;
         if (el) {
             el.addEventListener('click', function () {
                 if ($('#' + dropID).is(':hidden')) {
                     $.ajax({    //use CORS proxy server
                         url: 'https://crossorigin.me/' + newURL(name, artist),
                         error: function() {
-                            $('#' + dropID).append("Lyrics Unavailable");
+                            //append unavailable message if not already appended
+                            if (!appended) {
+                                $('#' + dropID).append("Lyrics Unavailable");
+                                appended = true;
+                            }
                         },
                         success: function(res){
                             var html = lyricsParse(res);
-                            $('#' + dropID).append(html);
+                            //append lyrics if not already appended
+                            if (!appended) {
+                                $('#' + dropID).append(html);
+                                appended = true;
+                            }
+
                         }
 
                     });
@@ -131,6 +141,12 @@ function addLyricListener(id, dropID, name, artist) {
     })();
 }
 
+/**
+ * Creates a url with azlyrics based on artist name and song title
+ * @param name  the name of the song
+ * @param artist    the name of the artist
+ * @returns {string} the url to request
+ */
 function newURL(name, artist){
     var url = "https://www.azlyrics.com/lyrics/";
 
@@ -151,6 +167,11 @@ function newURL(name, artist){
     return url;
 }
 
+/**
+ * Parses the azlyrics page for the song lyrics
+ * @param html  the song lyrics in html format
+ * @returns {string}    the song lyrics in html format
+ */
 function lyricsParse(html){
     var marker1 = "<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->";
     var marker2 = "<!-- MxM banner -->";
