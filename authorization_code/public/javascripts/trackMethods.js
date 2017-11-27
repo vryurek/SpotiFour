@@ -53,7 +53,7 @@ function displayTracks(tracks) {
         addAlbumListener(trck.album.id, trck.album.name, trck.artists[0].name, i.toString());    //add listener to album
         addArtistListener(trck.artists[0].name, trck.artists[0].id, trck.artists[0].id + "" + i);    //add listener to album
         addPlayListener(trck.uri);          //add listeners to play button
-        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric", trck.name, trck.artists[0]);
+        addLyricListener("lyric" + "" + i.toString() + "" + i.toString(), i.toString() + "" + "lyric", trck.name, trck.artists[0].name);
     }
 }
 
