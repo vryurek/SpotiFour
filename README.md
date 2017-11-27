@@ -18,7 +18,8 @@ login screen. We have created a Spotify account specifically for this project (L
 - Top 50 songs globally and in the United States
 - View music in the user's Spotify library, including playlists
 - Ability to play music using the Spotify play button (Full song when using a premium account with the Spotify client downloaded, plays 30s previews otherwise)
-- Ability to retrieve lyrics for songs - Work in Progress 
+- Ability to retrieve lyrics for songs*
+
 
 
 ### Authors
@@ -26,3 +27,5 @@ Veronica Yurek\
 Sarah Curtis\
 Evan de Jesus\
 Dylan Gaines
+
+*All lyrics are property and copyright of their owners and are provided through this application for non-profit personal use only.
