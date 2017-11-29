@@ -153,18 +153,26 @@ function newURL(name, artist){
     var url = "https://www.azlyrics.com/lyrics/";
 
     name = name.toLowerCase();
+
+    var lastIndex = name.lastIndexOf(" - ");
+    if(lastIndex != -1) name = name.substring(0, lastIndex);
+    console.log(name);
+
     name = name.split(' ').join('');
-    name = name.replace(/[&\/\\!#,+()$~%.'":*?<>{}]/g, '');
+    name = name.replace(/[&\/\\!#,+()$~%.'":*?<>{}-]/g, '');
 
     artist = artist.toLowerCase();
     artist = artist.split(' ').join('');
-    artist = artist.replace(/[&\/\\!#,+()$~%.'":*?<>{}]/g, '');
+    artist = artist.replace(/[$]/g, 's');
+    artist = artist.replace(/[&\/\\!#,+()~%.'":*?<>{}-]/g, '');
 
     if(artist.substring(0,3) == "the"){
         artist = artist.substring(3);
     }
 
-    console.log(artist);
+    lastIndex = name.lastIndexOf("feat");
+    if(lastIndex != -1) name = name.substring(0, lastIndex);
+
     url += artist + "/" + name + ".html";
     return url;
 }
