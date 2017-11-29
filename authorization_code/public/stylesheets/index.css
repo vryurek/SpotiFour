@@ -48,6 +48,22 @@ div#header {
     color: black;
 }
 
+.btn-primary:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#searchbtn {
+    background-color: black;
+    color: white;
+    font-size: 16pt;
+    vertical-align: middle;
+}
+
+#searchbtn:hover {
+    color: #66fcf1;
+}
+
 div#paneHeader {
     background-color: black;
     font-family: LatoWeb;
