@@ -148,12 +148,13 @@ body {
 
 .lyric-drop {
     display: none;
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(45, 45, 45);
     min-height: 300px;
     padding: 50px 0 0 0;
     color: #66fcf1;
     font-size: 12pt;
     text-align: center;
+    /*width: 100%;*/
 
 }
 

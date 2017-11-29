@@ -232,6 +232,7 @@ function addPlaylistListener(listID, userID, playlistName) {
                     $('#login').show();
                     $('#loggedin').hide();
                 }, false);
+
             }
         }
 
