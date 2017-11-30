@@ -159,6 +159,9 @@ function newURL(name, artist){
     if(lastIndex != -1) name = name.substring(0, lastIndex);
     console.log(name);
 
+    lastIndex = name.lastIndexOf("(with");
+    if(lastIndex != -1) name = name.substring(0, lastIndex);
+
     name = name.split(' ').join('');
     name = name.replace(/[&\/\\!#,+()$~%.'":*?<>{}-]/g, '');
 
