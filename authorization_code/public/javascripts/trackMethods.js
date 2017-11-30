@@ -1,3 +1,4 @@
+
 /**
  * This file creates and formats a list of tracks and
  * adds listeners to all the links and play buttons
@@ -296,3 +297,10 @@ function getDuration(time) {
     }
     return minutes + ":" + seconds;
 }
+
+//export functions for unit testing
+if(typeof exports !== 'undefined') {
+    exports.getDuration = getDuration;
+    exports.newURL = newURL;
+}
+

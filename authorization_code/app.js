@@ -1,5 +1,6 @@
 /*
-    Handler of the oAuth authentication flow
+    Handler of the oAuth authentication flow from Spotify API tutorial,
+    has been modified for our application
  */
 
 var express = require('express'); // Express web server framework
@@ -38,7 +39,7 @@ app.get('/login', function(req, res) {          //login route
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
-    // your application requests authorization
+    // application requests authorization
     var scope = 'user-read-private user-read-email ' +
         'user-library-read user-modify-playback-state ' +
         'user-read-playback-state user-read-currently-playing';          //scopes
@@ -55,7 +56,7 @@ app.get('/login', function(req, res) {          //login route
 
 app.get('/callback', function(req, res) {       //callback route
 
-    // your application requests refresh and access tokens
+    // application requests refresh and access tokens
     // after checking the state parameter
 
     var code = req.query.code || null;
@@ -140,4 +141,12 @@ app.get('/refresh_token', function(req, res) {      //route to refresh the acces
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(8888);   //launch
+
+//for unit testing, add js files to test as node modules so mocha can access them
+var track = require('./public/javascripts/trackMethods.js');
+if(typeof exports !== 'undefined') {
+    exports.generateRandomString = generateRandomString;
+    exports.getDuration = track.getDuration;
+    exports.newURL = track.newURL;
+}
