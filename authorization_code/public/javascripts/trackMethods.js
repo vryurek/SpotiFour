@@ -151,31 +151,35 @@ function addLyricListener(id, dropID, name, artist) {
  * @returns {string} the url to request
  */
 function newURL(name, artist){
+
     var url = "https://www.azlyrics.com/lyrics/";
 
     name = name.toLowerCase();
 
     var lastIndex = name.lastIndexOf(" - ");
-    if(lastIndex != -1) name = name.substring(0, lastIndex);
-    console.log(name);
+    if(lastIndex !== -1) name = name.substring(0, lastIndex);
 
     lastIndex = name.lastIndexOf("(with");
-    if(lastIndex != -1) name = name.substring(0, lastIndex);
+    if(lastIndex !== -1) name = name.substring(0, lastIndex);
 
     name = name.split(' ').join('');
     name = name.replace(/[&\/\\!#,+()$~%.'":*?<>{}-]/g, '');
+
+    if(name === "thefreshprinceofbelair"){
+        return "https://www.azlyrics.com/lyrics/djjazzyjeffthefreshprince/freshprinceofbelairthemesong.html";
+    }
 
     artist = artist.toLowerCase();
     artist = artist.split(' ').join('');
     artist = artist.replace(/[$]/g, 's');
     artist = artist.replace(/[&\/\\!#,+()~%.'":*?<>{}-]/g, '');
 
-    if(artist.substring(0,3) == "the"){
+    if(artist.substring(0,3) === "the"){
         artist = artist.substring(3);
     }
 
     lastIndex = name.lastIndexOf("feat");
-    if(lastIndex != -1) name = name.substring(0, lastIndex);
+    if(lastIndex !== -1) name = name.substring(0, lastIndex);
 
     url += artist + "/" + name + ".html";
     return url;
